@@ -1,5 +1,7 @@
 #include "kingdom_main.h"
 
+//Funkcije za resetovanje podesavanja
+
 void redisplayAll(void){
   
     glutSetWindow(screen);
@@ -21,5 +23,9 @@ void reset(void){
   // resetovanje crtanja
   axes = DEF_AXES;
   grid = DEF_GRID;
-
+  
+  
+  //resetovanje tekstura
+  currentTexture=TEX_DEFAULT;
+  currentTextureSelected=TEX_DEFAULT;
 }

@@ -22,3 +22,11 @@
 // ukljucuje/iskljucujemo sta crtamo
 #define DEF_AXES 0
 #define DEF_GRID 0
+
+//definicije tekstura
+#define TEX_DEFAULT 0
+#define TEX_GRASS 7
+
+/*  Shadows  */
+#define DEF_D_FLOOR 45
+#define DEF_Y_FLOOR -3

@@ -14,6 +14,7 @@ void windowKey(unsigned char key,int x,int y){
       exit(0);
 }
 
+//menjanje ekrana
 void windowReshape(int width,int height){
     windowHeight=height;
     windowWidth=width;

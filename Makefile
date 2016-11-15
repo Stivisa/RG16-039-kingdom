@@ -5,8 +5,8 @@ CFLAGS = -Wall -c
 LDFLAGS =  -lGL -lGLU -lglut -lm
 
 
-program: $(TARGET).o general.o globals.o ground.o init.o screen.o window.o
-	gcc -o $(PROGRAM) $(LDFLAGS)  $(TARGET).o general.o globals.o ground.o init.o screen.o window.o
+program: $(TARGET).o general.o globals.o ground.o init.o screen.o window.o models.o print.o loadTexture.o 
+	gcc -o $(PROGRAM) $(LDFLAGS)  $(TARGET).o general.o globals.o ground.o init.o screen.o window.o models.o print.o loadTexture.o 
 	
 $(TARGET).o: $(TARGET).c defines.h prototypes.h kingdom_main.h
 	$(CC) $(CFLAGS) $(TARGET).c
@@ -29,11 +29,20 @@ screen.o: screen.c defines.h prototypes.h kingdom_main.h
 window.o: window.c defines.h prototypes.h kingdom_main.h
 	$(CC) $(CFLAGS) window.c
 
+models.o: models.c defines.h prototypes.h kingdom_main.h
+	$(CC) $(CFLAGS) models.c
+	
+print.o: print.c defines.h prototypes.h kingdom_main.h
+	$(CC) $(CFLAGS) print.c
+	
+loadTexture.o: loadTexture.c defines.h prototypes.h kingdom_main.h
+	$(CC) $(CFLAGS) loadTexture.c
+	
 .PHONY: clean beauty
 
 clean:
 	-rm *.o $(PROGRAM) 
 
 beauty:
-	indent -kr $(PROGRAM).c
+	indent -kr *.c
 

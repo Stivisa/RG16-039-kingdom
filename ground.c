@@ -1,11 +1,15 @@
 #include "kingdom_main.h"
 
-// crtanje Axes
+/*funkcije za crtanje zemlje i mreze 
+ * radi lakseg crtanja drugih objekata
+ */
 
+// crtanje Axes
 void drawAxes(void){
   //duzina axes-a
   const double len=5.0;
   printf("%d",axes);
+  
   //crtamo x,y,z osu radi lakseg snalazenja u okruzenju
   if (axes==0) {
     glDisable(GL_LIGHTING);
@@ -57,11 +61,17 @@ void drawGrid(void)
   }
 }
 
+//crtamo zemlje
+void drawBoard(void){
+    board();
+}
+
 //crtanje scene
 void drawScene(void){
     
     drawAxes();
     drawGrid();
+    drawBoard();
 }
 
 

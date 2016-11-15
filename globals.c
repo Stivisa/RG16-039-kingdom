@@ -20,3 +20,8 @@ double ecZ=DEF_ECZ;	//eye center postion z
 //sta zelimo da crtamo
 int axes=DEF_AXES;  // ukljuci/iskljuci axes
 int grid=DEF_GRID;	// ukljuci/iskljuci grid
+
+//teksture
+unsigned int textures[17];   //sadrzi nase teksture
+int currentTexture=TEX_DEFAULT;  //ako nije postavljeno nista
+int currentTextureSelected=TEX_DEFAULT;  //ako nista nije selektovano

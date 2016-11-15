@@ -20,6 +20,7 @@ int main(int argc, char** argv){
     initialize();
     
     redisplayAll();
+    //ulazak u glavnu petlju
     glutMainLoop();
     return 0;
 }

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <stdarg.h>
 
 //glut biblioteka
 #include <GL/glut.h>
@@ -36,3 +37,8 @@ extern double ecZ;
 //za crtanje terena
 extern int axes;
 extern int grid;
+
+//Teksture
+extern unsigned int textures[17];
+extern int currentTexture;
+extern int currentTextureSelected;
