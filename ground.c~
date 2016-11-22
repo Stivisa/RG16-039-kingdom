@@ -66,6 +66,15 @@ void drawBoard(void){
     board();
 }
 
+//cratmo 
+void drawSoldier(void){
+  int i,k;
+    soldierModel(s);
+    
+  
+  
+}
+
 //crtanje scene
 void drawScene(void){
     

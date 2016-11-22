@@ -6,18 +6,23 @@ void reset(void);
 //funckije iz init.c
 void initialize(void);
 void screenInit(void);
+void sidebarInit(void);
 void initTextures(void);
+void initSoldier(void);
+void initObjs(void);
 
-//funckije iz ground.c
+//funckije iz draw.c
 void drawAxes(void);
 void drawGrid(void);
 void drawScene(void);
 void drawBoard(void);
+void drawSoldier(void);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);
 void windowKey(unsigned char key,int x,int y);
 void windowReshape(int width, int height);
+void windowVisable(int vis);
 
 
 //funckije za ekran iz screen.c
@@ -30,6 +35,7 @@ void screenReshape(int width, int height);
 
 //funkcije iz models.c
 void board();
+void soldierModel(soldier m);
 
 //ucitavanje BMP fajl loadTexBMP
 unsigned int loadTexBMP(char *file);
@@ -40,3 +46,10 @@ void print(const char* format , ...);
 void printAt(int x,int y, const char* format , ...);
 void errCheck(char* where);
 void fatal(const char* format, ...);
+
+//funkcije iz sidebar.c
+void sidebarDisplay(void);
+void sidebarReshape(int width, int height);
+
+//funkcje iz loadObject.c
+int loadOBJ(char *file);

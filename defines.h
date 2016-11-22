@@ -5,8 +5,14 @@
 
 // pocetne vrednosti ekrana 
 #define DEF_FULL_SCREEN 0
-#define DEF_WINDOW_HEIGHT 700
+#define DEF_WINDOW_HEIGHT 800
 #define DEF_WINDOW_WIDTH 1000
+
+//prostor izmedju glavnog prozora i pomocnog
+#define DEF_SPACER 10
+
+//sidebar velicina
+#define DEF_SIDEBAR_HEIGHT 200
 
 
 // pocetne vredneosti projekcije
@@ -30,3 +36,6 @@
 /*  Shadows  */
 #define DEF_D_FLOOR 45
 #define DEF_Y_FLOOR -3
+
+//Vojnici
+#define DEF_SOLDIER_OBJ 0

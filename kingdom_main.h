@@ -12,8 +12,13 @@
 //definicije pocetnih vrednosti
 #include "defines.h"
 
+//strukture podataka
+#include "structs.h"
+
 //protpipi funkcija
 #include "prototypes.h"
+
+
 
 //Globalne promenljive
 
@@ -42,3 +47,8 @@ extern int grid;
 extern unsigned int textures[17];
 extern int currentTexture;
 extern int currentTextureSelected;
+
+
+//vojnici
+extern int soldierObj;
+extern soldier s;

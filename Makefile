@@ -1,43 +1,16 @@
-TARGET=kingdom_main
 PROGRAM = Kingdom
 CC = gcc
 CFLAGS = -Wall -c
 LDFLAGS =  -lGL -lGLU -lglut -lm
+DEP=defines.h prototypes.h kingdom_main.h structs.h
+OBJ= kingdom_main.o general.o globals.o ground.o init.o screen.o window.o models.o print.o loadTexture.o loadObject.o sidebar.o
 
+%.o: %.c $(DEP)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-program: $(TARGET).o general.o globals.o ground.o init.o screen.o window.o models.o print.o loadTexture.o 
-	gcc -o $(PROGRAM) $(LDFLAGS)  $(TARGET).o general.o globals.o ground.o init.o screen.o window.o models.o print.o loadTexture.o 
-	
-$(TARGET).o: $(TARGET).c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) $(TARGET).c
+$(PROGRAM): $(OBJ)
+	$(CC) $(LDFLAGS) -o $(PROGRAM) $^
 
-general.o: general.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) general.c
-	
-globals.o: globals.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) globals.c
-
-ground.o: ground.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) ground.c
-
-init.o: init.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) init.c
-
-screen.o: screen.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) screen.c
-
-window.o: window.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) window.c
-
-models.o: models.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) models.c
-	
-print.o: print.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) print.c
-	
-loadTexture.o: loadTexture.c defines.h prototypes.h kingdom_main.h
-	$(CC) $(CFLAGS) loadTexture.c
-	
 .PHONY: clean beauty
 
 clean:
