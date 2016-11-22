@@ -14,7 +14,7 @@ $(PROGRAM): $(OBJ)
 .PHONY: clean beauty
 
 clean:
-	-rm *.o $(PROGRAM) 
+	-rm *.o $(PROGRAM) *~
 
 beauty:
 	indent -kr *.c
