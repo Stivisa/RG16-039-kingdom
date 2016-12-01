@@ -52,3 +52,6 @@ extern int currentTextureSelected;
 //vojnici
 extern int soldierObj;
 extern soldier s;
+
+//kocka
+extern GLfloat cube_v[][3];

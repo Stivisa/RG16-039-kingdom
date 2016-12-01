@@ -86,4 +86,9 @@ void drawScene(void)
     //drawGrid();
     drawBoard();
 	drawSoldier();
+	cube(2,2,2,4,4,4,1);
+	//circle(2);
+	sphere(6,6,20,10,3);
+	cone(2,2,-15,6,10,1);
+	cylinder(5,5,-30,6,10);
 }

@@ -53,3 +53,12 @@ void sidebarReshape(int width, int height);
 
 //funkcje iz loadObject.c
 int loadOBJ(char *file);
+
+//funkcije iz shapes.c
+void square(int s,int a,int b,int c, int d);
+void cube(double x,double y, double z, double dx, double dy, double dz, double th);
+void vertex(double th,double ph);
+void circle(int r);
+void sphere(double x,double y,double z,double r,double rot);
+void cone(double x,double y,double z,double r,double h,int deg);
+void cylinder(double x,double y,double z,double r,double h);

@@ -29,3 +29,10 @@ int currentTextureSelected = TEX_DEFAULT;	//ako nista nije selektovano
 //vojnici
 int soldierObj = DEF_SOLDIER_OBJ;
 soldier s;
+
+//kocke
+GLfloat cube_v[][3]={
+  {-1.0,-1.0,-1.0},{+1.0,-1.0,-1.0},{+1.0,+1.0,-1.0},
+  {-1.0,+1.0,-1.0},{-1.0,-1.0,+1.0},{+1.0,-1.0,+1.0},
+  {+1.0,+1.0,+1.0},{-1.0,+1.0,+1.0}
+};
