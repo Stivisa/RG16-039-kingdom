@@ -17,6 +17,8 @@ void drawGrid(void);
 void drawScene(void);
 void drawBoard(void);
 void drawSoldier(void);
+void drawParameters(void);
+void drawLight(void);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);

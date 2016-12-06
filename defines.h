@@ -34,6 +34,7 @@
 #define DEF_AXES 0
 #define DEF_GRID 0
 #define DEF_D 5
+#define DEF_VALS 0
 
 //definicije tekstura
 #define TEX_DEFAULT 0
@@ -45,3 +46,16 @@
 
 //Vojnici
 #define DEF_SOLDIER_OBJ 0
+
+//svetlost
+#define DEF_LIGHT 1
+#define DEF_DISTANCE 40
+#define DEF_AMBIENT 35
+#define DEF_DIFFUSE 100
+#define DEF_EMISSION 0
+#define DEF_SPECULAR 0
+#define DEF_SHININESS 0
+#define DEF_L_Y 0
+#define DEF_L_PH 90
+
+#define DEF_RENDER 1

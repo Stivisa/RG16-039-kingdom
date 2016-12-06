@@ -33,10 +33,13 @@ void square(int s, int a, int b, int c, int d){
 	 else if(s==6){
 	   glNormal3f(0,-1,0);
 	 }
-	 
+	glTexCoord2f(0,0); 
 	glVertex3fv(cube_v[a]);
+	glTexCoord2f(1,0);
     glVertex3fv(cube_v[b]);
+	glTexCoord2f(1,1);
     glVertex3fv(cube_v[c]);
+	glTexCoord2f(0,1);
     glVertex3fv(cube_v[d]);
 
   glEnd();
@@ -48,6 +51,18 @@ void square(int s, int a, int b, int c, int d){
  * rotiranje za th oko y ose
 */
 void cube(double x,double y, double z, double dx, double dy, double dz, double th){
+  
+  float emissions[] = {0,0,0.01*emission,1};
+  glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,shinyvec);
+  glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,white);
+  glMaterialfv(GL_FRONT_AND_BACK,GL_EMISSION,emissions);
+
+  //ukljucujemo teksture
+  if (renderMode == DEF_RENDER) {
+    glEnable(GL_TEXTURE_2D);
+    //Koristimo trenutnu teksturu
+    glBindTexture(GL_TEXTURE_2D,currentTexture);
+  }
   
   glPushMatrix();
   
@@ -71,6 +86,7 @@ void cube(double x,double y, double z, double dx, double dy, double dz, double t
 
   glPopMatrix();
   
+   glDisable(GL_TEXTURE_2D);
 }
 
 //Crtamo najvisu tacku
@@ -81,6 +97,7 @@ void vertex(double th,double ph)
    double z =         Sin(ph);
   
    glNormal3d(x,y,z);
+   glTexCoord2d(th/360.0,ph/180.0+0.5);
    glVertex3d(x,y,z);
 }
 
@@ -102,6 +119,18 @@ void circle(int r)
 void sphere(double x,double y,double z,double r,double rot)
 {
  int th,ph;
+ 
+ float yellow[] = {1.0,1.0,0.0,1.0};
+  float emissions[] = {0.0,0.0,0.01*emission,1.0};
+  glMaterialfv(GL_FRONT,GL_SHININESS,shinyvec);
+  glMaterialfv(GL_FRONT,GL_SPECULAR,yellow);
+  glMaterialfv(GL_FRONT,GL_EMISSION,emissions);
+
+  //koristimo teksture
+  if (renderMode == DEF_RENDER) {
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,currentTexture);
+  }
   
  glPushMatrix();
 
@@ -121,6 +150,7 @@ void sphere(double x,double y,double z,double r,double rot)
   }
   glPopMatrix();
   
+  glDisable(GL_TEXTURE_2D);
 }
 
 //crtamo kupu
@@ -128,6 +158,11 @@ void cone(double x,double y,double z,
 	  double r,double h,int deg)
 {
   int k;
+  
+  if (renderMode == DEF_RENDER) {
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,currentTexture);
+  }
   
   glPushMatrix();
 
@@ -141,12 +176,15 @@ void cone(double x,double y,double z,
   glBegin(GL_TRIANGLES);
   for (k=0;k<=360;k+=deg){
     glNormal3f(0,0,1);
+	glTexCoord2f(0.5,0.5);
     glVertex3f(0,0,1);
 
     glNormal3f(Cos(k),Sin(k),r);
+	glTexCoord2f((double)1/2*Cos(k)+0.5,(double)1/2*Sin(k)+0.5);
     glVertex3f(Cos(k),Sin(k),0);
 
     glNormal3f(Cos(k+deg),Sin(k+deg),r);
+	glTexCoord2f((double)1/2*Cos(k+deg)+0.5,(double)1/2*Sin(k+deg)+0.5);
     glVertex3f(Cos(k+deg),Sin(k+deg),0);
   }
   glEnd();
@@ -156,14 +194,18 @@ void cone(double x,double y,double z,
   glBegin(GL_TRIANGLES);
   glNormal3f(0,-1,0);
   for (k=0;k<=360;k+=deg) {
+	glTexCoord2f(0.5,0.5);
     glVertex3f(0,0,0);
+	glTexCoord2f(0.5*Cos(k)+0.5,0.5*Sin(k)+0.5);
     glVertex3f(Cos(k),0,Sin(k));
+	 glTexCoord2f(0.5*Cos(k+deg)+0.5,0.5*Sin(k+deg)+0.5);
     glVertex3f(Cos(k+deg),0,Sin(k+deg));
   }
   glEnd();
 
   glPopMatrix();
 
+  glDisable(GL_TEXTURE_2D);
 }
 
 //crtamo valjak
@@ -171,6 +213,10 @@ void cylinder(double x,double y,double z,
 	      double r,double h)
 {
   int i,k;
+  if (renderMode == DEF_RENDER) {
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,currentTexture);
+  }
   
   glPushMatrix();
 
@@ -182,8 +228,10 @@ void cylinder(double x,double y,double z,
   glBegin(GL_QUAD_STRIP);
   for (k=0;k<=360;k+=DEF_D) {
     glNormal3f(Cos(k),0,Sin(k));
+	glTexCoord2f(-Cos(k),Sin(k));
     glVertex3f(Cos(k),+1,Sin(k));
 
+	glTexCoord2f(Cos(k),Sin(k));
     glVertex3f(Cos(k),-1,Sin(k));
   }
   glEnd();
@@ -202,4 +250,5 @@ void cylinder(double x,double y,double z,
   }
 
   glPopMatrix();
+  glDisable(GL_TEXTURE_2D);
 }

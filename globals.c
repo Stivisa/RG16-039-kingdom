@@ -20,6 +20,7 @@ double ecZ = DEF_ECZ;		//eye center postion z
 //sta zelimo da crtamo
 int axes = DEF_AXES;		// ukljuci/iskljuci axes
 int grid = DEF_GRID;		// ukljuci/iskljuci grid
+int vals=DEF_VALS;
 
 //teksture
 unsigned int textures[17];	//sadrzi nase teksture
@@ -36,3 +37,19 @@ GLfloat cube_v[][3]={
   {-1.0,+1.0,-1.0},{-1.0,-1.0,+1.0},{+1.0,-1.0,+1.0},
   {+1.0,+1.0,+1.0},{-1.0,+1.0,+1.0}
 };
+
+//Svetlost
+int light=DEF_LIGHT;          //Ukljuciti svetlost
+int distance=DEF_DISTANCE;    //Daljina svetlosti
+int ambient=DEF_AMBIENT;      //ambient intensity in %
+int diffuse=DEF_DIFFUSE;      // diffuse intensity %
+int emission=DEF_EMISSION;    // emission intensity % 
+int specular=DEF_SPECULAR;    // specular intensity % 
+int shininess=DEF_SHININESS;  //odsjaj
+float shinyvec[1]={1};        //vrednost odsjaja
+float lightY=DEF_L_Y;         //elevation of light
+int lightPh=DEF_L_PH;
+float white[]={1,1,1,1};
+
+//definiseme da li nesto renderujemo
+int renderMode=DEF_RENDER; 

@@ -24,13 +24,32 @@ void drawAxes(void)
 	glVertex3d(0.0, 0.0, len);
 	glEnd();
 
-	/*glRasterPos3d(len,0.0,0.0);
-	   glRasterPos3d(0.0,len,0.0);
-	   glRasterPos3d(0.0,0.0,len);
-	 */
+	glRasterPos3d(len,0.0,0.0);
+	print("X");
+	glRasterPos3d(0.0,len,0.0);
+	print("Y");
+	glRasterPos3d(0.0,0.0,len);
+	print("Z");
+	
 	glEnable(GL_LIGHTING);
     }
 
+}
+
+//Ispisujemo parametre, pomaze pri doredjivanju svetlosti i ostalih dodataka
+void drawParameters(void)
+{
+  if (vals) {
+    glColor3fv(white);
+    
+    printAt(5,5,"Angle=%d,%d  Dim=%.1f FOV=%d Light=%s",
+	    th,ph,dim,fov,light?"On":"Off");
+    if (light) {
+      printAt(5,45,"Distance=%d Elevation=%.1f",distance,lightY);
+      printAt(5,25,"Ambient=%d  Diffuse=%d Specular=%d Emission=%d Shininess=%.0f",
+	      ambient,diffuse,specular,emission,shinyvec[0]);
+    }
+  }
 }
 
 //crtanje grid-a
@@ -68,7 +87,7 @@ void drawBoard(void)
     board();
 }
 
-//cratmo 
+//crtamo vojnika
 void drawSoldier(void)
 {
     //int i, k;
@@ -76,6 +95,39 @@ void drawSoldier(void)
 
 
 
+}
+
+//cramo svetlost, sferu ako nam zatreba
+void drawLight(void){
+  //ako je svetlost aktivirano ili ne
+  if (light==1) {
+    
+    float Ambient[]   = {0.01*ambient ,0.01*ambient ,0.01*ambient ,1.0};
+    float Diffuse[]   = {0.01*diffuse ,0.01*diffuse ,0.01*diffuse ,1.0};
+    float Specular[]  = {0.01*specular,0.01*specular,0.01*specular,1.0};
+    //Pozicija svetlosti
+    float Position[]  = {lightY,distance*Sin(lightPh),distance*Cos(lightPh),1.0};
+
+    //Crtamo poziciju svetla kao sferu
+    glColor3f(1.0, 1.0, 1.0);
+    sphere(Position[0],Position[1],Position[2] , 0.1,0);
+    //Normalizacija vektora
+    glEnable(GL_NORMALIZE);
+    //Ukljucujemo osvetljenje
+    glEnable(GL_LIGHTING);
+   
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE);
+    glEnable(GL_COLOR_MATERIAL);
+   
+    glEnable(GL_LIGHT0);
+   
+	glLightfv(GL_LIGHT0,GL_AMBIENT ,Ambient);
+    glLightfv(GL_LIGHT0,GL_DIFFUSE ,Diffuse);
+    glLightfv(GL_LIGHT0,GL_SPECULAR,Specular);
+    glLightfv(GL_LIGHT0,GL_POSITION,Position);
+  }
+  else
+    glDisable(GL_LIGHTING);
 }
 
 //crtanje scene

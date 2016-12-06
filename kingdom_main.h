@@ -42,6 +42,7 @@ extern double ecZ;
 //za crtanje terena
 extern int axes;
 extern int grid;
+extern int vals;
 
 //Teksture
 extern unsigned int textures[17];
@@ -55,3 +56,18 @@ extern soldier s;
 
 //kocka
 extern GLfloat cube_v[][3];
+
+//svetlost
+extern int light;
+extern int distance;
+extern int ambient;
+extern int diffuse;
+extern int emission;
+extern int specular;
+extern int shininess;
+extern float shinyvec[1];
+extern float lightY;
+extern float white[];
+extern int lightPh;
+
+extern int renderMode;
