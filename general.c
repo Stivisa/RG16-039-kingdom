@@ -1,5 +1,7 @@
 #include "kingdom_main.h"
 
+//tesrianje gita ne radi kako treba
+
 //Funkcije za resetovanje podesavanja
 
 void redisplayAll(void)
