@@ -57,3 +57,109 @@ void soldierModel(soldier s2)
     glPopMatrix();
 
 }
+
+
+/*
+ *  wall
+ *  ------
+ *  A wall is just a few textured cubes
+ */
+void wall(double x,double y,double z,
+	  double dx,double dy,double dz,
+	  double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  currentTexture = textures[TEX_BRICK];
+  /* wall */
+  cube(0,-2,0, 0.2,1,1, 0);
+  cube(0,0,0, 0.2,1,1, 0);
+  cube(0,2,0, 0.2,1,1, 0);
+  cube(0,4,0, 0.2,1,1, 0);
+
+  glPushMatrix();
+  glTranslated(0,0,-2);
+  cube(0,-2,0, 0.2,1,1, 0);
+  cube(0,0,0, 0.2,1,1, 0);
+  cube(0,2,0, 0.2,1,1, 0);
+  cube(0,4,0, 0.2,1,1, 0);
+  glPopMatrix();
+
+  glPushMatrix();
+  glTranslated(0,0,2);
+  cube(0,-2,0, 0.2,1,1, 0);
+  cube(0,0,0, 0.2,1,1, 0);
+  cube(0,2,0, 0.2,1,1, 0);
+  cube(0,4,0, 0.2,1,1, 0);
+  glPopMatrix();
+
+  /* platform */
+  glPushMatrix();
+  glTranslated(1,4,0);
+  glRotated(90,0,0,1);
+  glRotated(90,1,0,0);
+  cube(0,-2,0, 0.2,1,1, 0);
+  cube(0,0,0, 0.2,1,1, 0);
+  cube(0,2,0, 0.2,1,1, 0);
+  glPopMatrix();
+
+  /* top blocks */
+  glPushMatrix();
+  glTranslated(0,5,0);
+  cube(0,0,1.3, 0.2,1,0.7, 0);
+  cube(0,0,-1.3, 0.2,1,0.7, 0);
+  glPopMatrix();
+  currentTexture = textures[TEX_DEFAULT];
+
+  glPopMatrix();
+}
+
+
+//crtamo blokove za put
+void pathBlock(pathCube p)
+{
+  glPushMatrix();
+
+  if (renderMode == DEF_RENDER) {
+    currentTexture = textures[p.texture];
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,currentTexture);
+  }
+  glEnable(GL_POLYGON_OFFSET_FILL);
+  glPolygonOffset(1,1);
+  glColor3f(1,1,1);
+  glNormal3f(0,1,0);
+
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(p.p.x-2, p.p.y, p.p.z-2);
+  glTexCoord2f(1,0); glVertex3f(p.p.x-2, p.p.y, p.p.z+2);
+  glTexCoord2f(1,1); glVertex3f(p.p.x+2, p.p.y, p.p.z+2);
+  glTexCoord2f(0,1); glVertex3f(p.p.x+2, p.p.y, p.p.z-2);
+  glEnd();
+
+  glDisable(GL_POLYGON_OFFSET_FILL);
+
+  if  (renderMode == DEF_RENDER) {
+    glDisable(GL_TEXTURE_2D);
+    currentTexture = textures[TEX_DEFAULT];
+  }
+
+  glPopMatrix();
+}
+
+//put koji se sastoji iz vise blokova puta
+void path(void)
+{
+  int i;
+  glPushMatrix();
+  
+  
+  for (i=0; i < DEF_PATH_LEN; i++) {
+    pathBlock(pathCubes[i]);
+  }
+  currentTexture = textures[TEX_DEFAULT];
+  glPopMatrix();
+}

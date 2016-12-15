@@ -48,7 +48,7 @@ void screenReshape(int width, int height)
 {
     //postavljamo odgovarajucu proporciju
     asp = (height > 0) ? (double) width / height : 1;
-    windowHeight = height;
+    windowWidth = width;
 
     //postavljanje viewport-a za ceo prozora
     glViewport(0, 0, width, height);

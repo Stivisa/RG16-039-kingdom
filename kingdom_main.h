@@ -48,14 +48,16 @@ extern int vals;
 extern unsigned int textures[17];
 extern int currentTexture;
 extern int currentTextureSelected;
-
+extern int backgrounds[6];
 
 //vojnici
 extern int soldierObj;
 extern soldier s;
 
-//kocka
+//kocka i putevi
 extern GLfloat cube_v[][3];
+extern pathCube pathCubes[];
+extern pathCube fullPath[];
 
 //svetlost
 extern int light;

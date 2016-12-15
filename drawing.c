@@ -81,6 +81,68 @@ void drawGrid(void)
     }
 }
 
+/*  
+ *  Cratmo pozadinu, postavljamo kutiju sa slikama neba
+ */
+void drawBackground(double D)
+{
+  glColor3fv(white);
+  glEnable(GL_TEXTURE_2D);
+
+  /* strane */
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_RIGHT]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(-D,-D,-D);
+  glTexCoord2f(1,0); glVertex3f(+D,-D,-D);
+  glTexCoord2f(1,1); glVertex3f(+D,+D,-D);
+  glTexCoord2f(0,1); glVertex3f(-D,+D,-D);
+  glEnd();
+
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_FRONT]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(+D,-D,-D);
+  glTexCoord2f(1,0); glVertex3f(+D,-D,+D);
+  glTexCoord2f(1,1); glVertex3f(+D,+D,+D);
+  glTexCoord2f(0,1); glVertex3f(+D,+D,-D);
+  glEnd();
+  
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_LEFT]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(+D,-D,+D);
+  glTexCoord2f(1,0); glVertex3f(-D,-D,+D);
+  glTexCoord2f(1,1); glVertex3f(-D,+D,+D);
+  glTexCoord2f(0,1); glVertex3f(+D,+D,+D);
+  glEnd();
+
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_BACK]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(-D,-D,+D);
+  glTexCoord2f(1,0); glVertex3f(-D,-D,-D);
+  glTexCoord2f(1,1); glVertex3f(-D,+D,-D);
+  glTexCoord2f(0,1); glVertex3f(-D,+D,+D);
+  glEnd();
+
+  /* gornji deo */
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_UP]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,0); glVertex3f(-D,+D,-D);
+  glTexCoord2f(1,0); glVertex3f(+D,+D,-D);
+  glTexCoord2f(1,1); glVertex3f(+D,+D,+D);
+  glTexCoord2f(0,1); glVertex3f(-D,+D,+D);
+  glEnd();
+
+  /* donji deo */
+  glBindTexture(GL_TEXTURE_2D,backgrounds[BACK_DOWN]);
+  glBegin(GL_QUADS);
+  glTexCoord2f(1,1); glVertex3f(+D,-D,-D);
+  glTexCoord2f(0,1); glVertex3f(-D,-D,-D);
+  glTexCoord2f(0,0); glVertex3f(-D,-D,+D);
+  glTexCoord2f(1,0); glVertex3f(+D,-D,+D);
+  glEnd();
+
+  glDisable(GL_TEXTURE_2D);
+}
+
 //crtamo zemlje
 void drawBoard(void)
 {
@@ -95,6 +157,14 @@ void drawSoldier(void)
 
 
 
+}
+
+/*
+ *  crtamo put
+ */
+void drawPath(void)
+{
+  path();
 }
 
 //cramo svetlost, sferu ako nam zatreba
@@ -136,7 +206,11 @@ void drawScene(void)
 
     //drawAxes();
     //drawGrid();
-    drawBoard();
+	drawBackground(3.5*dim);
+    drawLight();
+    
+	drawBoard();
+	drawPath();
 	drawSoldier();
 	cube(2,2,2,4,4,4,1);
 	//circle(2);

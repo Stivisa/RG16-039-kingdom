@@ -35,10 +35,34 @@
 #define DEF_GRID 0
 #define DEF_D 5
 #define DEF_VALS 0
+#define DEF_D 5
 
 //definicije tekstura
 #define TEX_DEFAULT 0
+#define TEX_BRICK 1
+#define TEX_FIRE 2
+#define TEX_ICE 3
+#define TEX_EARTH 4
+#define TEX_POISON 5
+#define TEX_SPIKE 6
 #define TEX_GRASS 7
+#define TEX_WOOD 8
+#define TEX_BRICK2 9
+#define TEX_CRATE 10
+#define TEX_STREET1 11
+#define TEX_STREET2 12
+#define TEX_STREET3 13
+#define TEX_STREET4 14
+#define TEX_STREET5 15
+#define TEX_STREET6 16
+
+//Pozadina
+#define BACK_FRONT 0
+#define BACK_RIGHT 1
+#define BACK_LEFT 2
+#define BACK_BACK 3
+#define BACK_UP 4
+#define BACK_DOWN 5
 
 /*  Shadows  */
 #define DEF_D_FLOOR 45
@@ -59,3 +83,12 @@
 #define DEF_L_PH 90
 
 #define DEF_RENDER 1
+
+
+//putanja
+#define DEF_FULL_PATH_LEN 50
+#define DEF_NORTH 270
+#define DEF_EAST 180
+#define DEF_SOUTH 90
+#define DEF_WEST 0
+#define DEF_PATH_LEN 45

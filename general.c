@@ -34,8 +34,19 @@ void reset(void)
     // resetovanje crtanja
     axes = DEF_AXES;
     grid = DEF_GRID;
+	vals = DEF_VALS;
 
-
+	//resetujemo svetlost
+	light     = DEF_LIGHT;
+	distance  = DEF_DISTANCE;
+	ambient   = DEF_AMBIENT;
+	diffuse   = DEF_DIFFUSE;
+	emission  = DEF_EMISSION;
+	specular  = DEF_SPECULAR;
+	shininess = DEF_SHININESS;
+	lightY    = DEF_L_Y;
+	
+	
     //resetovanje tekstura
     currentTexture = TEX_DEFAULT;
     currentTextureSelected = TEX_DEFAULT;

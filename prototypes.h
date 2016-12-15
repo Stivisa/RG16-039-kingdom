@@ -10,6 +10,8 @@ void sidebarInit(void);
 void initTextures(void);
 void initSoldier(void);
 void initObjs(void);
+void initPath(void);
+void initBackground(void);
 
 //funckije iz draw.c
 void drawAxes(void);
@@ -19,6 +21,8 @@ void drawBoard(void);
 void drawSoldier(void);
 void drawParameters(void);
 void drawLight(void);
+void drawPath(void);
+void drawBackground(double d);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);
@@ -38,6 +42,11 @@ void screenReshape(int width, int height);
 //funkcije iz models.c
 void board();
 void soldierModel(soldier m);
+void pathBlock(pathCube p);
+void path(void);
+void crate(double x, double y, double z,double dx,double dy,double dz,double th);
+void wall(double x, double y, double z,double dx,double dy,double dz,double th);
+
 
 //ucitavanje BMP fajl loadTexBMP
 unsigned int loadTexBMP(char *file);
@@ -64,3 +73,7 @@ void circle(int r);
 void sphere(double x,double y,double z,double r,double rot);
 void cone(double x,double y,double z,double r,double h,int deg);
 void cylinder(double x,double y,double z,double r,double h);
+void pyramid(double x, double y, double z,double dx, double dy, double dz,double th);
+void star(double x, double y, double z,double dx, double dy, double dz,double th);
+void spike(double x, double y, double z,double r,double h,int deg,double ox,double oy,double oz);
+

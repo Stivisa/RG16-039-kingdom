@@ -18,7 +18,8 @@ typedef struct _soldier {
   point rotation;
   int texture;
   rgb rgb;
-  /* game data */
+  
+  //podaci u igrici
   char* name;
   int damage;
   int health;
@@ -26,3 +27,10 @@ typedef struct _soldier {
   double speed;
   int inPlay;
 } soldier;
+
+typedef struct pathCube {
+  point p;
+  int texture;
+  int rotation;
+  int dir;
+} pathCube;

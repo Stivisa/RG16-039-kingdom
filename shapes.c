@@ -252,3 +252,99 @@ void cylinder(double x,double y,double z,
   glPopMatrix();
   glDisable(GL_TEXTURE_2D);
 }
+
+/*
+ *  Crtanje piramide 
+ *     na (x,y,z)
+ *     dimenzija (dx,dy,dz)
+ *     rotiranje za th ugao oko y ose
+ */ 
+void pyramid(double x, double y, double z,
+		    double dx, double dy, double dz,
+		    double th)
+{
+  glPushMatrix();
+  
+  //transformisemo kocku
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  cone(0,0,0, 1,1, 90);
+
+  glPopMatrix();
+}
+
+
+/*
+ *  Crtamo zvezdu
+ *     na (x, y, z)
+ *     dimenzija dx, dy, dz
+ *     rotirane za th ugao oko y ose
+ */
+void star(double x, double y, double z,
+		 double dx, double dy, double dz,
+		 double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  pyramid(0,0.5,0, 1,3,1, 0);
+
+  //zadnja strana
+  glPushMatrix();
+  glRotatef(-90,1,0,0);
+  pyramid(0,0.5,0, 1,3,1, 90);
+  glPopMatrix();
+
+  //prednja strana
+  glPushMatrix();
+  glRotatef(90,1,0,0);
+  pyramid(0,0.5,0, 1,3,1, 0);
+  glPopMatrix();
+
+  //desna strana
+  glPushMatrix();
+  glRotatef(-90,0,0,1);
+  pyramid(0,0.5,0, 1,3,1, 90);
+  glPopMatrix();
+
+  //leva strana
+  glPushMatrix();
+  glRotatef(90,0,0,1);
+  pyramid(0,0.5,0, 1,3,1, -90);
+  glPopMatrix();
+
+  //donji deo zvezde
+  glPushMatrix();
+  glRotatef(180,1,0,0);
+  pyramid(0,0.5,0, 1,3,1, 0);
+  glPopMatrix();
+
+  glPopMatrix();
+}
+
+/*
+ *  Crtamo siljkove
+ *     na (x, y, z)
+ *     precnika r, visine h,
+ *     rotirano za ox oko x ose
+ *     rotirano za oy oko y ose
+ *     rotirano za oz oko y ose
+ */
+void spike(double x, double y, double z,
+		  double r,double h,int deg,
+		  double ox,double oy,double oz)
+{
+  currentTexture = textures[TEX_SPIKE];
+  glPushMatrix();
+  glRotated(oz,0,0,1);
+  glRotated(oy,0,1,0);
+  glRotated(ox,1,0,0);
+
+  cone(x,y,z, r,h,deg);
+  glPopMatrix();
+  currentTexture = textures[TEX_DEFAULT];
+}
