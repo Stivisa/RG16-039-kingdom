@@ -39,10 +39,11 @@ extern double ecX;
 extern double ecY;
 extern double ecZ;
 
-//za crtanje terena
+//funkcije za crtanje
 extern int axes;
 extern int grid;
 extern int vals;
+extern int showAttackRadius;
 
 //Teksture
 extern unsigned int textures[17];
@@ -73,3 +74,23 @@ extern float white[];
 extern int lightPh;
 
 extern int renderMode;
+
+
+//kule
+extern tower default_towers[6];
+extern tower tower_data[16];
+extern int lastCurrentObject;
+extern int renderMode;
+extern int objectPicked;
+extern int currentRed;
+extern int currentGreen;
+extern int currentBlue;
+extern char *currentTowerName;
+extern int currentTowerRange;
+extern int currentTowerDamage;
+extern int currentTowerFireRate;
+extern int currentTowerCost;
+extern char *currentTowerDescription;
+extern tower towers[DEF_CURRENT_OBJS_SIZE];
+extern tower preview_tower;
+extern int towerTh;

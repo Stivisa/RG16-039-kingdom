@@ -16,6 +16,7 @@ int main(int argc, char **argv)
     glutDisplayFunc(windowDisplay);
     glutReshapeFunc(windowReshape);
     glutKeyboardFunc(windowKey);
+	glutSpecialFunc(windowSpecial);
 
     //funckija za postavljanje sve na picetne vrednosti
     reset();

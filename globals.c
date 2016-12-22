@@ -21,6 +21,7 @@ double ecZ = DEF_ECZ;		//eye center postion z
 int axes = DEF_AXES;		// ukljuci/iskljuci axes
 int grid = DEF_GRID;		// ukljuci/iskljuci grid
 int vals=DEF_VALS;
+int showAttackRadius=DEF_SHOW_ATTACK;
 
 //teksture
 unsigned int textures[17];	//sadrzi nase teksture
@@ -52,8 +53,24 @@ float lightY=DEF_L_Y;         //elevation of light
 int lightPh=DEF_L_PH;
 float white[]={1,1,1,1};
 
-//definiseme da li nesto renderujemo
-int renderMode=DEF_RENDER; 
+
+
+//podaci o kulama
+tower towers[DEF_CURRENT_OBJS_SIZE];    
+tower preview_tower;                     
+int renderMode=DEF_RENDER;                                  
+int currentRed=DEF_CURRENT_RED;
+int currentGreen=DEF_CURRENT_GREEN;
+int currentBlue=DEF_CURRENT_BLUE;
+char *currentTowerName=DEF_CURRENT_TOWER_NAME;
+int currentTowerRange=DEF_CURRENT_TOWER_RANGE;
+int currentTowerDamage=DEF_CURRENT_TOWER_DAMAGE;
+int currentTowerFireRate=DEF_CURRENT_TOWER_FIRE_RATE;
+int currentTowerCost=DEF_CURRENT_TOWER_COST;
+char *currentTowerDescription=DEF_CURRENT_TOWER_DESCRIPTION;
+int lastCurrentObject=DEF_LAST_CURRENT_OBJECT;
+int towerTh=DEF_TOWER_TH;
+
 
 //definisemo putanju puta koji treba da se iscrta i na kome idu vojnici
 pathCube pathCubes[] = {
@@ -83,3 +100,56 @@ pathCube pathCubes[] = {
 };
 
 pathCube fullPath[2200];
+
+
+//Osnovne kule
+tower default_towers[6] = {
+  {0,OBJ_BASIC,1,{17,0,-17},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Basic",1,         5, 3,4,0,10,"Description"},
+  {0,OBJ_FIRE,1,{9,0,-13},{1,1,1},{0,0,0},TEX_FIRE,{10,5,5},
+   "Fire",1,          12,4,3,0,40,"Description"},
+  {0,OBJ_FIRE2,1,{9,0,-9},{1,1,1},{0,0,0},TEX_FIRE,{15,5,5},
+   "Advanced Fire",1, 12,6,3,0,45,"Description"},
+  {0,OBJ_ICE,1,{13,0,3},{1,1,1},{0,0,0},TEX_ICE,{20,5,5},
+   "Ice",1,           12,5,4,0,50,"Description"},
+  {0,OBJ_EARTH,1,{13,0,19},{1,1,1},{0,0,0},TEX_EARTH,{25,5,5},
+   "Earth",1,         10,8,6,0,60,"Description"}
+};
+
+//Podaci o kulama
+tower tower_data[16] = {
+  /*
+    id, tip, igri, translation, scale, rotation, teksture, rgb,
+    ime, zona napada, napad, brzina napada, koliko kosta, opis
+   */
+  {0,OBJ_FIRE,1,{0,0,0},{1,1,1},{0,0,0},TEX_FIRE,{5,5,5},
+   "Fire",1,          10,4,3,0,40,"Just your typical fire tower"},
+  {0,OBJ_FIRE2,1,{0,0,0},{1,1,1},{0,0,0},TEX_FIRE,{5,5,5},
+   "Advanced Fire",1, 12,6,3,0,45,"Just your typical fire tower - with spikes!"},
+
+  {0,OBJ_ICE,1,{0,0,0},{1,1,1},{0,0,0},TEX_ICE,{5,5,5},
+   "Ice",1,           10,5,4,0,50,"Just your typical ice tower"},
+  {0,OBJ_ICE2,1,{0,0,0},{1,1,1},{0,0,0},TEX_ICE,{5,5,5},
+   "Advanced Ice",1,  12,7,4,0,55,"Just your typical ice tower - with spikes!"},
+
+  {0,OBJ_EARTH,1,{0,0,0},{1,1,1},{0,0,0},TEX_EARTH,{5,5,5},
+   "Earth",1,         10,8,6,0,60,"Just your typical earth tower"},
+  {0,OBJ_EARTH2,1,{0,0,0},{1,1,1},{0,0,0},TEX_EARTH,{5,5,5},
+   "Advanced Earth",1,12,8,6,0,60,"Just your typical earth tower - with spikes!"},
+   
+  {0,OBJ_BASIC,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Basic",1,           5,3,4,0,10,"A basic tower"},
+  {0,OBJ_ADV,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Advanced",1,        7,4,4,0,15,"A basic tower - with spikes!"},
+
+  {0,OBJ_CONE,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Cone",1,            7,6,4,0,20,"A cone tower"},
+  {0,OBJ_ADV_CONE,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Advanced Cone",1,   9,6,4,0,25,"A cone tower - with spikes!"},
+
+  {0,OBJ_SQUARE,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Square",1,          9,6,3,0,30,"A square tower"},
+  {0,OBJ_ADV_SQUARE,1,{0,0,0},{1,1,1},{0,0,0},TEX_BRICK,{5,5,5},
+   "Advanced Square",1, 10,6,3,0,35,"A square tower - with spikes!"},
+  
+};

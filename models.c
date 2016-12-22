@@ -40,6 +40,61 @@ void board(void)
     glPopMatrix();
 }
 
+//dvorac
+void keep(double x,double y,double z,
+	  double dx,double dy,double dz,
+	  double th)
+{
+  tower t = {0, OBJ_ADV_SQUARE,1,{9,0,9},{1.5,2,1.5},{0,0,0},TEX_BRICK2,{1,1,1},
+	     "Advanced Tower",-1,-1,-1,-1,-1,-1,"Description"};
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  //zadnji deo zida
+  wall(-9,0,5, 1,1,1, 0);
+  wall(-9,0,-0.5, 1,1,1, 0);
+  wall(-9,0,-6, 1,1,1, 0);
+
+  //levi deo zida
+  glPushMatrix();
+  glRotated(90,0,1,0);
+  wall(-9,0,5, 1,1,1, 0);
+  wall(-9,0,-0.5, 1,1,1, 0);
+  wall(-9,0,-6, 1,1,1, 0);
+  glPopMatrix();
+
+  //desni deo zida
+  glPushMatrix();
+  glRotated(270,0,1,0);
+  wall(-9,0,5, 1,1,1, 0);
+  wall(-9,0,-0.5, 1,1,1, 0);
+  wall(-9,0,-6, 1,1,1, 0);
+  glPopMatrix();
+
+  //prednji deo zida
+  glPushMatrix();
+  glRotated(180,0,1,0);
+  wall(-9,0,5, 1,1,1, 0);
+  /* gap here */
+  wall(-9,0,-6, 1,1,1, 0);
+  glPopMatrix();
+
+  //Kule
+  advancedSquareTower(t);
+  t.translation.x = -9;
+  advancedSquareTower(t);
+  t.translation.z = -9;
+  advancedSquareTower(t);
+  t.translation.x = 9;
+  advancedSquareTower(t);
+
+
+  currentTexture = textures[TEX_DEFAULT];
+  glPopMatrix();
+}
+
 //praviomo model soldier-a
 void soldierModel(soldier s2)
 {

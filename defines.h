@@ -35,7 +35,7 @@
 #define DEF_GRID 0
 #define DEF_D 5
 #define DEF_VALS 0
-#define DEF_D 5
+#define DEF_SHOW_ATTACK 0
 
 //definicije tekstura
 #define TEX_DEFAULT 0
@@ -71,6 +71,25 @@
 //Vojnici
 #define DEF_SOLDIER_OBJ 0
 
+//kule
+#define DEF_CURRENT_OBJS_SIZE 57
+#define DEF_LAST_CURRENT_OBJECT 0
+#define DEF_OBJ_SEL 0
+#define DEF_PREVIEW 1
+#define DEF_RENDER 1
+#define DEF_SELECT 2
+#define DEF_CURRENT_RED 5
+#define DEF_CURRENT_GREEN 5
+#define DEF_CURRENT_BLUE 5
+#define DEF_CURRENT_TOWER_NAME "Basic"
+#define DEF_CURRENT_TOWER_RANGE 5
+#define DEF_CURRENT_TOWER_DAMAGE 5
+#define DEF_CURRENT_TOWER_FIRE_RATE 4
+#define DEF_CURRENT_TOWER_COST 10
+#define DEF_CURRENT_TOWER_DESCRIPTION "A basic tower"
+#define DEF_LAST_CURRENT_OBJECT 0
+#define DEF_TOWER_TH 0
+
 //svetlost
 #define DEF_LIGHT 1
 #define DEF_DISTANCE 40
@@ -92,3 +111,18 @@
 #define DEF_SOUTH 90
 #define DEF_WEST 0
 #define DEF_PATH_LEN 45
+
+
+//definicanje objekata napravljenih u igri kule, piramide ...
+#define OBJ_FIRE 1
+#define OBJ_FIRE2 2
+#define OBJ_ICE 3
+#define OBJ_ICE2 4
+#define OBJ_EARTH 5
+#define OBJ_EARTH2 6
+#define OBJ_BASIC 7
+#define OBJ_ADV 8
+#define OBJ_CONE 9
+#define OBJ_ADV_CONE 10
+#define OBJ_SQUARE 11
+#define OBJ_ADV_SQUARE 12

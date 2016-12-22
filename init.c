@@ -22,6 +22,7 @@ void screenInit(void)
     glutDisplayFunc(screenDisplay);
     glutReshapeFunc(screenReshape);
     glutKeyboardFunc(windowKey);
+	glutSpecialFunc(windowSpecial);
 }
 
 //funkcija za inicijalizaciju prozora sa opcijama
@@ -33,6 +34,7 @@ void sidebarInit(void)
     glutDisplayFunc(sidebarDisplay);
     glutReshapeFunc(sidebarReshape);
     glutKeyboardFunc(windowKey);
+	glutSpecialFunc(windowSpecial);
 
 }
 
@@ -156,4 +158,15 @@ void initSoldier(void)
     };
     s=s1;
 
+}
+
+//inicijalizacija osnovnih kula
+void initDefaultTowers(void)
+{
+  int i;
+  for (i=0;i<Length(default_towers);i++) {
+    towers[i] = default_towers[i];
+  }
+  lastCurrentObject = 6;
+  currentRed = 35;
 }

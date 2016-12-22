@@ -200,6 +200,105 @@ void drawLight(void){
     glDisable(GL_LIGHTING);
 }
 
+void drawKeep(void)
+{
+  keep(-32,0,10, 1,1,1, 0);
+}
+
+
+
+//cratnje objekata kula
+void drawObjects(void)
+{
+  int i;
+
+  /* preview tower */
+  if (preview_tower.id != DEF_OBJ_SEL) {
+    tower t = {preview_tower.id,preview_tower.type,preview_tower.inPlay,
+	       {preview_tower.translation.x,preview_tower.translation.y,preview_tower.translation.z},
+	       {1,1,1},{0,0,0},preview_tower.texture,{1,1,1},
+	       preview_tower.name,1,preview_tower.range,preview_tower.damage,
+	       preview_tower.fireRate,0,preview_tower.cost};
+
+    /* awesome opacity for the preview */
+	showAttackRadius = 1;
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE,GL_ONE_MINUS_DST_COLOR);
+    if (t.type == OBJ_BASIC) basicTower(t);
+    else if (t.type == OBJ_ADV){
+	  advancedTower(t); 
+	}
+    else if (t.type == OBJ_CONE){ 
+	  coneTower(t);
+	}
+    else if (t.type == OBJ_ADV_CONE){
+	  advancedConeTower(t);
+	}
+    else if (t.type == OBJ_SQUARE){
+	  squareTower(t);
+	}
+    else if (t.type == OBJ_ADV_SQUARE){
+	  advancedSquareTower(t);
+	}
+    else if (t.type == OBJ_FIRE){ 
+	  fireTower(t);
+	}
+    else if (t.type == OBJ_FIRE2){ 
+	  advanceFireTower(t);
+	}  
+    else if (t.type == OBJ_ICE){
+	  iceTower(t);
+	}
+    else if (t.type == OBJ_ICE2){
+	  advanceIceTower(t);
+	} 
+    else if (t.type == OBJ_EARTH){
+	  earthTower(t);
+	} 
+    else if (t.type == OBJ_EARTH2){
+	  advanceEarthTower(t);
+	}
+    glDisable(GL_BLEND);
+	showAttackRadius = 0;
+  }
+
+  /* towers */
+  for (i = 0; i < Length(towers); i++) {
+    if (towers[i].inPlay) {
+      tower t = {0,towers[i].type,towers[i].inPlay,
+		 {towers[i].translation.x,towers[i].translation.y,towers[i].translation.z},
+		 {1,1,1},{0,0,0},towers[i].texture,
+		 {towers[i].rgb.r,towers[i].rgb.g,towers[i].rgb.b},
+		 towers[i].name,towers[i].level,towers[i].range,towers[i].damage,
+		 towers[i].fireRate,towers[i].lastFired,towers[i].cost,towers[i].description};
+
+      /* draw the objects */
+      if (renderMode == DEF_SELECT) {
+	glDisable(GL_DITHER);
+	glDisable(GL_LIGHTING);
+	glColor3ub(towers[i].rgb.r,towers[i].rgb.g,towers[i].rgb.b);
+      }
+      if (t.type == OBJ_BASIC) basicTower(t);
+      else if (t.type == OBJ_ADV) advancedTower(t);
+      else if (t.type == OBJ_CONE) coneTower(t);
+      else if (t.type == OBJ_ADV_CONE) advancedConeTower(t);
+      else if (t.type == OBJ_SQUARE) squareTower(t);
+      else if (t.type == OBJ_ADV_SQUARE) advancedSquareTower(t);
+      else if (t.type == OBJ_FIRE) fireTower(t);
+      else if (t.type == OBJ_FIRE2) advanceFireTower(t);
+      else if (t.type == OBJ_ICE) iceTower(t);
+      else if (t.type == OBJ_ICE2) advanceIceTower(t);
+      else if (t.type == OBJ_EARTH) earthTower(t);
+      else if (t.type == OBJ_EARTH2) advanceEarthTower(t);
+      
+      if (renderMode == DEF_SELECT) {
+	glEnable(GL_DITHER);
+	glEnable(GL_LIGHTING);
+      }
+    }
+  }
+}
+
 //crtanje scene
 void drawScene(void)
 {
@@ -211,10 +310,12 @@ void drawScene(void)
     
 	drawBoard();
 	drawPath();
-	drawSoldier();
-	cube(2,2,2,4,4,4,1);
+	//drawSoldier();
+	//cube(2,2,2,4,4,4,1);
 	//circle(2);
-	sphere(6,6,20,10,3);
-	cone(2,2,-15,6,10,1);
-	cylinder(5,5,-30,6,10);
+	//sphere(6,6,20,10,3);
+	//cone(2,2,-15,6,10,1);
+	//cylinder(5,5,-30,6,10);
+	drawKeep();
+	drawObjects();
 }

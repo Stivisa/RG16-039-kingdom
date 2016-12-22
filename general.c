@@ -21,6 +21,7 @@ void redisplayAll(void)
 
 void reset(void)
 {
+	int i;
     //resetovanje projekcije
     asp = DEF_ASP;
     dim = DEF_DIM;
@@ -46,8 +47,39 @@ void reset(void)
 	shininess = DEF_SHININESS;
 	lightY    = DEF_L_Y;
 	
+	//restartovanje objekata
+	for (i=0;i<DEF_CURRENT_OBJS_SIZE;i++) {
+	  towers[i].id = 0;
+	  towers[i].type = 0;
+	  towers[i].translation.x = 0;
+	  towers[i].translation.y = 0;
+	  towers[i].translation.z = 0;
+	  towers[i].texture = 0;
+	  towers[i].rgb.r = 0;
+	  towers[i].rgb.g = 0;
+	  towers[i].rgb.b = 0;
+	}
+	preview_tower.id = 0;
+	preview_tower.type = 0;
+	preview_tower.translation.x = 0;
+	preview_tower.translation.y = 0;
+	preview_tower.translation.z = 0;
+	preview_tower.texture = 0;
+	preview_tower.name = "pregled";
 	
     //resetovanje tekstura
     currentTexture = TEX_DEFAULT;
     currentTextureSelected = TEX_DEFAULT;
+}
+
+//postavljanje informacija o kulama
+void setCurrentTowerData(int type)
+{
+  currentTextureSelected = tower_data[type-1].texture;
+  currentTowerName = tower_data[type-1].name;
+  currentTowerRange = tower_data[type-1].range;
+  currentTowerDamage = tower_data[type-1].damage;
+  currentTowerFireRate = tower_data[type-1].fireRate;
+  currentTowerCost = tower_data[type-1].cost;
+  currentTowerDescription = tower_data[type-1].description;
 }

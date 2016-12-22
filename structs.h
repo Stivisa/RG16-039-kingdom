@@ -34,3 +34,23 @@ typedef struct pathCube {
   int rotation;
   int dir;
 } pathCube;
+
+typedef struct tower {
+  int id;
+  int type;
+  int inPlay;
+  point translation;
+  point scale;
+  point rotation;
+  int texture;
+  rgb rgb;
+  //podaci u igrici
+  char* name;
+  int level;
+  int range;
+  int damage;
+  int fireRate;
+  double lastFired;
+  int cost;
+  char* description;
+} tower;

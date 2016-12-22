@@ -47,7 +47,7 @@ void screenProject(double fov, double asp, double dim)
 void screenReshape(int width, int height)
 {
     //postavljamo odgovarajucu proporciju
-    asp = (height > 0) ? (double) width / height : 1;
+    asp = (height > 0) ? (double) width /height : 1;
     windowWidth = width;
 
     //postavljanje viewport-a za ceo prozora

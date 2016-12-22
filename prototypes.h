@@ -2,6 +2,7 @@
 //generalne funckije iz general.c
 void redisplayAll(void);
 void reset(void);
+void setCurrentTowerData(int type);
 
 //funckije iz init.c
 void initialize(void);
@@ -12,6 +13,7 @@ void initSoldier(void);
 void initObjs(void);
 void initPath(void);
 void initBackground(void);
+void initDefaultTowers(void);
 
 //funckije iz draw.c
 void drawAxes(void);
@@ -23,12 +25,15 @@ void drawParameters(void);
 void drawLight(void);
 void drawPath(void);
 void drawBackground(double d);
+void drawObjects(void);
+void drawKeep(void);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);
 void windowKey(unsigned char key,int x,int y);
 void windowReshape(int width, int height);
 void windowVisable(int vis);
+void windowSpecial(int key,int x,int y);
 
 
 //funckije za ekran iz screen.c
@@ -39,6 +44,7 @@ void screenProject(double fov, double asp, double dim);
 void screenReshape(int width, int height);
 
 
+
 //funkcije iz models.c
 void board();
 void soldierModel(soldier m);
@@ -46,7 +52,7 @@ void pathBlock(pathCube p);
 void path(void);
 void crate(double x, double y, double z,double dx,double dy,double dz,double th);
 void wall(double x, double y, double z,double dx,double dy,double dz,double th);
-
+void keep(double x, double y, double z,double dx,double dy,double dz,double th);
 
 //ucitavanje BMP fajl loadTexBMP
 unsigned int loadTexBMP(char *file);
@@ -76,4 +82,18 @@ void cylinder(double x,double y,double z,double r,double h);
 void pyramid(double x, double y, double z,double dx, double dy, double dz,double th);
 void star(double x, double y, double z,double dx, double dy, double dz,double th);
 void spike(double x, double y, double z,double r,double h,int deg,double ox,double oy,double oz);
+
+//Kule (towers.c)
+void basicTower(tower t);
+void advancedTower(tower t);
+void coneTower(tower t);
+void advancedConeTower(tower t);
+void squareTower(tower t);
+void advancedSquareTower(tower t);
+void fireTower(tower t);
+void advanceFireTower(tower t);
+void iceTower(tower t);
+void advanceIceTower(tower t);
+void earthTower(tower t);
+void advanceEarthTower(tower t);
 

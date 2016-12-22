@@ -8,12 +8,60 @@ void windowDisplay(void)
     glutSwapBuffers();
 }
 
+//funkcija za osnovne komande u igrici
 void windowKey(unsigned char key, int x, int y)
 {
 
     //ESC da se izadje
     if (key == 27)
-	exit(0);
+	  exit(0);
+}
+
+//funkcija za specijalne komande
+//rotacija kamere, pomeranje kamere
+void windowSpecial(int key,int x,int y)
+{
+  int modifiers = glutGetModifiers();
+  
+  //Stiskamo SHIFT da bi aktivirali pomeranje kamere
+  if (modifiers == GLUT_ACTIVE_SHIFT) {
+    //rotacija levo desno
+    if (key == GLUT_KEY_RIGHT){
+	  th += 5;
+	}  
+    else if (key == GLUT_KEY_LEFT){
+	  th -= 5;
+	} 
+    //pomeranje gore dole
+    else if (key == GLUT_KEY_UP){
+	  ph += 5;
+	}
+    else if (key == GLUT_KEY_DOWN){
+	  ph -= 5;
+	}
+  }
+  //u drugim slucajevima samo pomeri ekran
+  else {
+   
+    if (key == GLUT_KEY_RIGHT){
+	  ecZ -= .5;
+	}
+    else if (key == GLUT_KEY_LEFT){
+	  ecZ += .5;
+	}
+    else if (key == GLUT_KEY_UP){
+	  ecX -= .5;
+	}  
+    else if (key == GLUT_KEY_DOWN){
+	  ecX += .5;
+	} 
+  }
+  
+  //Ostavljamo isti ugao
+  th %= 360;
+  ph %= 360;
+
+  redisplayAll();
 }
 
 //menjanje ekrana
