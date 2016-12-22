@@ -212,7 +212,7 @@ void drawObjects(void)
 {
   int i;
 
-  /* preview tower */
+  //pregled kula TODO: implmentirati do kraja
   if (preview_tower.id != DEF_OBJ_SEL) {
     tower t = {preview_tower.id,preview_tower.type,preview_tower.inPlay,
 	       {preview_tower.translation.x,preview_tower.translation.y,preview_tower.translation.z},
@@ -220,7 +220,7 @@ void drawObjects(void)
 	       preview_tower.name,1,preview_tower.range,preview_tower.damage,
 	       preview_tower.fireRate,0,preview_tower.cost};
 
-    /* awesome opacity for the preview */
+    //omogucavanje pregleda kula pre nego sto se unesu treba do kraja jos da se implmentira
 	showAttackRadius = 1;
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE,GL_ONE_MINUS_DST_COLOR);
@@ -262,7 +262,7 @@ void drawObjects(void)
 	showAttackRadius = 0;
   }
 
-  /* towers */
+  //kule
   for (i = 0; i < Length(towers); i++) {
     if (towers[i].inPlay) {
       tower t = {0,towers[i].type,towers[i].inPlay,
@@ -272,7 +272,7 @@ void drawObjects(void)
 		 towers[i].name,towers[i].level,towers[i].range,towers[i].damage,
 		 towers[i].fireRate,towers[i].lastFired,towers[i].cost,towers[i].description};
 
-      /* draw the objects */
+      //crtanje objekata
       if (renderMode == DEF_SELECT) {
 	glDisable(GL_DITHER);
 	glDisable(GL_LIGHTING);
