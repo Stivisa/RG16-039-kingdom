@@ -16,11 +16,28 @@ void printv(va_list args, const char *format)
     vsnprintf(buffer, SIZE, format, args);
 
     //prestavljamo karakter po karatker na datoj poziciji
-    /*while(*ch){
-       glutBitmapCharacter(fontStyle, *ch++);
-       } */
+    while (*ch) {
+	glutBitmapCharacter(fontStyle, *ch++);
+    }
 
 }
+
+//postavljamo font
+void setFont(char *name, int size)
+{
+    if (strcmp(name, "helvetica") == 0) {
+	  if (size == 10){
+	    fontStyle = GLUT_BITMAP_HELVETICA_10;
+	  }else if (size == 12){
+	    fontStyle = GLUT_BITMAP_HELVETICA_12;
+	  }else if (size == 18)
+	    fontStyle = GLUT_BITMAP_HELVETICA_18;
+    }else if (strcmp(name, "times roman") == 0) {
+	  if (size == 24)
+	    fontStyle = GLUT_BITMAP_TIMES_ROMAN_24;
+    }
+}
+
 
 //metoda za ispis
 void print(const char *format, ...)
@@ -46,7 +63,7 @@ void errCheck(char *error)
 {
     int err = glGetError();
     if (err) {
-	fprintf(stderr, "ERROR: %s [%s]\n", gluErrorString(err), error);
+	  fprintf(stderr, "ERROR: %s [%s]\n", gluErrorString(err), error);
     }
 
 }

@@ -10,20 +10,20 @@ int main(int argc, char **argv)
 
     window = glutCreateWindow(windowName);
 
-    if (DEF_FULL_SCREEN){
+    if (DEF_FULL_SCREEN) {
 	  glutFullScreen();
-	} 
+    }
     glutDisplayFunc(windowDisplay);
     glutReshapeFunc(windowReshape);
     glutKeyboardFunc(windowKey);
-	glutSpecialFunc(windowSpecial);
+    glutSpecialFunc(windowSpecial);
 
     //funckija za postavljanje sve na picetne vrednosti
     reset();
     //funckija za inicijlizaciju pogleda
     initialize();
 
-	 redisplayAll();
+    redisplayAll();
     //ulazak u glavnu petlju
     glutMainLoop();
     return 0;

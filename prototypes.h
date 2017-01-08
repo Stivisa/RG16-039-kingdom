@@ -1,8 +1,14 @@
 
 //generalne funckije iz general.c
+void changeObjectSelected(int newObjectSelected);
+void setCurrentTowerData(int type);
+point findMousePosition(int x, int y);
+point findPreviewPosition(int x, int y);
+void idle(void);
+void incrementCurrentRGB(void);
+void processPicks(void);
 void redisplayAll(void);
 void reset(void);
-void setCurrentTowerData(int type);
 
 //funckije iz init.c
 void initialize(void);
@@ -14,6 +20,9 @@ void initObjs(void);
 void initPath(void);
 void initBackground(void);
 void initDefaultTowers(void);
+void initPreviewPoints(void);
+void initShots(void);
+void initWaves(void);
 
 //funckije iz draw.c
 void drawAxes(void);
@@ -35,6 +44,22 @@ void windowReshape(int width, int height);
 void windowVisable(int vis);
 void windowSpecial(int key,int x,int y);
 
+//Animacija iz animations.c
+void timer(int toggle);
+void slowAnimate(void);
+void moveLight(void);
+void moveMinion(int k, int i, int j);
+void moveMinions(void);
+void moveShots(void);
+void moveTowerTops(void);
+
+//Detektcije sudara iz collision.c
+void checkCollisions(void);
+void checkTowerRange(void);
+
+//Projekcija senki iz shadows.c
+void shadowProjection(float L[4], float E[4], float N[4]);
+
 
 //funckije za ekran iz screen.c
 void displayInit(void);
@@ -42,8 +67,8 @@ void displayEye(void);
 void screenDisplay(void);
 void screenProject(double fov, double asp, double dim);
 void screenReshape(int width, int height);
-
-
+void screenMouse(int btn, int state, int x, int y);
+void screenPmotion(int x, int y);
 
 //funkcije iz models.c
 void board();
@@ -53,6 +78,7 @@ void path(void);
 void crate(double x, double y, double z,double dx,double dy,double dz,double th);
 void wall(double x, double y, double z,double dx,double dy,double dz,double th);
 void keep(double x, double y, double z,double dx,double dy,double dz,double th);
+void shotModel(shot s);
 
 //ucitavanje BMP fajl loadTexBMP
 unsigned int loadTexBMP(char *file);
@@ -63,10 +89,13 @@ void print(const char* format , ...);
 void printAt(int x,int y, const char* format , ...);
 void errCheck(char* where);
 void fatal(const char* format, ...);
+void setFont(char* name, int size);
 
 //funkcije iz sidebar.c
 void sidebarDisplay(void);
 void sidebarReshape(int width, int height);
+void sidebarRow(int x, int y, int obj, char* text);
+void sidebarMouse(int btn, int state, int x, int y);
 
 //funkcje iz loadObject.c
 int loadOBJ(char *file);
@@ -97,3 +126,11 @@ void advanceIceTower(tower t);
 void earthTower(tower t);
 void advanceEarthTower(tower t);
 
+// Funkcije za gameplay iz gameplay.c
+int calculateDamageToMinion(int k, int j, int i);
+void canUserBuyTower(int newObjectSelected);
+void modifyLives(int die, int damage);
+void modifyMoney(int what, int amount);
+void modifyScore(int k);
+void removeMinion(int k, int j);
+void removeShot(int i);

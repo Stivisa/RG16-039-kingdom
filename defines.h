@@ -3,6 +3,9 @@
 #define Cos(x) (cos(x*3.1415927/180))
 #define Sin(x) (sin(x*3.1415927/180))
 
+//ukljucivanje debagovanja
+#define DEF_DEBUG 0
+
 //Odredjivanje velicine niza
 #define Length(x) (sizeof(x)/sizeof *(x))
 
@@ -12,15 +15,18 @@
 #define DEF_WINDOW_WIDTH 1000
 
 //prostor izmedju glavnog prozora i pomocnog
-#define DEF_SPACER 10
+#define DEF_SPACER 5
 
-//sidebar velicina
+//visina sidebar-a
 #define DEF_SIDEBAR_HEIGHT 200
 
 //velicina teksta
 #define DEF_TEXT_Y_OFFSET 20
 
-// pocetne vredneosti projekcije
+//stil teksta
+#define DEF_FONT_STYLE GLUT_BITMAP_HELVETICA_10
+
+//pocetne vredneosti projekcije
 #define DEF_ASP 1
 #define DEF_DIM 25
 #define DEF_TH 250
@@ -30,12 +36,35 @@
 #define DEF_ECY 0
 #define DEF_ECZ 4
 
-// ukljucuje/iskljucujemo sta crtamo
+//ukljucuje/iskljucujemo sta crtamo od pomocnih alata 
 #define DEF_AXES 0
 #define DEF_GRID 0
 #define DEF_D 5
 #define DEF_VALS 0
 #define DEF_SHOW_ATTACK 0
+
+//picnjevi i sudar sa vojnikom
+#define DEF_LAST_SHOT 0
+#define DEF_COLLISION 0
+
+//Definicianje promenljivih vezane za animaciju
+#define DEF_INFO "Informacije o igri"
+#define DEF_GAME_STARTED 0
+#define DEF_GAME_PAUSED 1
+#define DEF_GAME_SPEED 30
+#define DEF_MOVE_LIGHT 1
+#define DEF_L_PH 90
+#define DEF_MOVE_TOWER_TOPS 1
+#define DEF_TOWER_TH 0
+
+//Podaci vezani za samu igru
+#define DEF_LIVES 10
+#define DEF_MONEY 100
+#define DEF_SCROLLS 0
+#define DEF_SCORE 0
+#define DEF_WAVE 0
+#define DEF_LAST_WAVE 5
+#define DEF_MINION_PER_WAVE_SIZE 10
 
 //definicije tekstura
 #define TEX_DEFAULT 0
@@ -64,17 +93,19 @@
 #define BACK_UP 4
 #define BACK_DOWN 5
 
-/*  Shadows  */
+//Senke
 #define DEF_D_FLOOR 45
 #define DEF_Y_FLOOR -3
 
 //Vojnici
 #define DEF_SOLDIER_OBJ 0
 
-//kule
+//Definisanje promenljivih vezane za kule i za biranje kula i pomeranje
 #define DEF_CURRENT_OBJS_SIZE 57
 #define DEF_LAST_CURRENT_OBJECT 0
 #define DEF_OBJ_SEL 0
+#define DEF_OBJ_PICKED -1
+#define DEF_BAD_POINT -255
 #define DEF_PREVIEW 1
 #define DEF_RENDER 1
 #define DEF_SELECT 2
@@ -87,10 +118,8 @@
 #define DEF_CURRENT_TOWER_FIRE_RATE 4
 #define DEF_CURRENT_TOWER_COST 10
 #define DEF_CURRENT_TOWER_DESCRIPTION "A basic tower"
-#define DEF_LAST_CURRENT_OBJECT 0
-#define DEF_TOWER_TH 0
 
-//svetlost
+//Svetlost
 #define DEF_LIGHT 1
 #define DEF_DISTANCE 40
 #define DEF_AMBIENT 35
@@ -101,10 +130,13 @@
 #define DEF_L_Y 0
 #define DEF_L_PH 90
 
+//Definisanje da li hocemo da renedrujemo objekte u igri
 #define DEF_RENDER 1
 
 
-//putanja
+
+//Putanja
+#define DEF_MINION_OBJ 0
 #define DEF_FULL_PATH_LEN 50
 #define DEF_NORTH 270
 #define DEF_EAST 180

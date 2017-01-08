@@ -45,6 +45,12 @@ extern int grid;
 extern int vals;
 extern int showAttackRadius;
 
+//font
+extern GLvoid *fontStyle;
+
+//kordinate za mis
+extern int mouseX, mouseY, mouseZ;
+
 //Teksture
 extern unsigned int textures[17];
 extern int currentTexture;
@@ -54,6 +60,8 @@ extern int backgrounds[6];
 //vojnici
 extern int soldierObj;
 extern soldier s;
+extern wave waves[DEF_LAST_WAVE];
+extern soldier soldiers[DEF_MINION_PER_WAVE_SIZE];
 
 //kocka i putevi
 extern GLfloat cube_v[][3];
@@ -75,10 +83,37 @@ extern int lightPh;
 
 extern int renderMode;
 
+//Pucnjevi i detekcija udara
+extern int showCollisionDetection;
+extern int lastShot;
+extern shot shots[200];
+
+//Animacija
+extern int gameStarted;
+extern int gamePaused;
+extern int gameSpeed;
+extern int moveLightB;
+extern int lightPh;
+extern int moveTowerTopsB;
+extern int towerTh;
+
+//Podaci o igri vazni za korisnika
+extern char *info;
+extern int lives;
+extern int money;
+extern int scrolls;
+extern int score;
+extern int waveNumber;
+extern int lastWave;
+
+
 
 //kule
 extern tower default_towers[6];
 extern tower tower_data[16];
+extern point preview_points[DEF_CURRENT_OBJS_SIZE];
+extern int preview;
+extern int objectSelected;
 extern int lastCurrentObject;
 extern int renderMode;
 extern int objectPicked;
@@ -94,3 +129,7 @@ extern char *currentTowerDescription;
 extern tower towers[DEF_CURRENT_OBJS_SIZE];
 extern tower preview_tower;
 extern int towerTh;
+
+//Senke
+extern float N[];
+extern float E[];

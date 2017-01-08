@@ -1,10 +1,10 @@
-typedef struct point {
+typedef struct _point {
   float x;
   float y;
   float z;
 } point;
 
-typedef struct rgb {
+typedef struct _rgb {
   int r;
   int g;
   int b;
@@ -28,14 +28,14 @@ typedef struct _soldier {
   int inPlay;
 } soldier;
 
-typedef struct pathCube {
+typedef struct _pathCube {
   point p;
   int texture;
   int rotation;
   int dir;
 } pathCube;
 
-typedef struct tower {
+typedef struct _tower {
   int id;
   int type;
   int inPlay;
@@ -54,3 +54,19 @@ typedef struct tower {
   int cost;
   char* description;
 } tower;
+
+
+typedef struct _wave {
+  int id;
+  int number;
+  soldier s[DEF_MINION_PER_WAVE_SIZE];
+} wave;
+
+
+
+typedef struct _shot {
+  int inPlay;
+  point p;
+  int texture;
+  int damage;
+} shot;
