@@ -125,7 +125,7 @@ void initPath(void)
 	    if (currentPath.p.x > nextPath.p.x){
 		  addedPath.p.x -= moveFactor;
 		}else if (currentPath.p.x < nextPath.p.x){
-		addedPath.p.x += moveFactor;
+		  addedPath.p.x += moveFactor;
 		}
 	    /*dodaj z */
 	    if (currentPath.p.z > nextPath.p.z){
@@ -142,7 +142,7 @@ void initPath(void)
 //funkcija za inicijalizaciju objekta
 void initObjs(void)
 {
-    soldierObj = loadOBJ("kv-1.obj");
+    soldierObj = loadOBJ("obj-f16.obj");
 }
 
 void initSoldier(void)
@@ -166,8 +166,8 @@ void initSoldier(void)
        int speed;
        int inPlay;
      */
-    soldier s1 = { 0, soldierObj, {26, -3.2, -0.5}, {0.1, 0.1, 0.1},
-				  {0, 20, 0}, 0, {1, 1, 1}, "Soldier", 1, 5, 5, 1, 1
+    soldier s1 = { 0, soldierObj, {26, 0, -0.5}, {1, 1, 1},
+				  {0, 270, 0}, 0, {1, 1, 1}, "F16", 1, 5, 5, 1, 1
 				 };
     int i;
     for (i = 0; i < DEF_MINION_PER_WAVE_SIZE; i++) {

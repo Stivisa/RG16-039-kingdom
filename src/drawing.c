@@ -63,7 +63,7 @@ void drawParameters(void)
 void drawGrid(void)
 {
     // crtanje grida
-    if (grid == 0) {
+    if (grid) {
 	  int i, j;
 	  glDisable(GL_LIGHTING);
 	  glColor3f(1.0, 1.0, 1.0);
@@ -322,10 +322,9 @@ void drawObjects(void)
 
 	    //crtanje objekata
 	    if (renderMode == DEF_SELECT) {
-		glDisable(GL_DITHER);
-		glDisable(GL_LIGHTING);
-		glColor3ub(towers[i].rgb.r, towers[i].rgb.g,
-			   towers[i].rgb.b);
+		  glDisable(GL_DITHER);
+		  glDisable(GL_LIGHTING);
+		  glColor3ub(towers[i].rgb.r, towers[i].rgb.g, towers[i].rgb.b);
 	    }
 	    if (t.type == OBJ_BASIC) {
 		  basicTower(t);
@@ -388,7 +387,7 @@ void drawShadows()
     //Crtamo objekte samo za koje hocemo senku
     //drawForests();
     drawKeep();
-    drawMinions();
+    drawSoldier();
     drawObjects();
 
     glPopMatrix();

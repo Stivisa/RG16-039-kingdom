@@ -17,7 +17,7 @@ void printv(va_list args, const char *format)
 
     //prestavljamo karakter po karatker na datoj poziciji
     while (*ch) {
-	glutBitmapCharacter(fontStyle, *ch++);
+	  glutBitmapCharacter(fontStyle, *ch++);
     }
 
 }

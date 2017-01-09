@@ -69,22 +69,21 @@ void moveMinions(void)
 
 	//Za svakog vojnika u talasu
 	for (i = 0; i < Length(waves[k].s); i++) {
-	    int speed = waves[k].s[i].speed;
-	    int damage = waves[k].s[i].damage;
+	  int speed = waves[k].s[i].speed;
+	  int damage = waves[k].s[i].damage;
 
-	    for (j = 0; j < (DEF_PATH_LEN * DEF_FULL_PATH_LEN); j += speed) {
+	  for (j = 0; j < (DEF_PATH_LEN * DEF_FULL_PATH_LEN); j += speed) {
 		//Ako je vojnik u igri i ispred dvorca primi stetu i izbaci vojnika iz igre
-		      if (waves[k].s[i].inPlay == 1 &&
-		          waves[k].s[i].translation.x <= -15 &&
-		          waves[k].s[i].translation.z == 11) {
-		    //Vojnik ti nanosi stetu i izbacujemo ga iz igre
-		    modifyLives(1, damage);
-		    waves[k].s[i].inPlay = 0;
-		    break;
+		if (waves[k].s[i].inPlay == 1 && waves[k].s[i].translation.x <= -15 &&
+			waves[k].s[i].translation.z == 11) {
+		  //Vojnik ti nanosi stetu i izbacujemo ga iz igre
+		  modifyLives(1, damage);
+		  waves[k].s[i].inPlay = 0;
+		  break;
 		}
 
-		//Prvi vojnik
-		if (i == 0) {
+		  //Prvi vojnik
+		  if (i == 0) {
 		    //pocetni ulaz
 		    if (waves[k].s[i].translation.x > 25) {
 			moveMinion(k, i, 0);
@@ -97,25 +96,24 @@ void moveMinions(void)
 			        break;
 		    }
 
-		//Svaki drugi vojnik
-        }else {
+		  //Svaki drugi vojnik
+		  }else {
 		    //prvi prolaz
-		    if (fabs(waves[k].s[i - 1].translation.x - waves[k].s[i].translation.x) >
-			     ((waves[k].s[i].scale.x) * 20)
+		    if (fabs(waves[k].s[i - 1].translation.x - waves[k].s[i].translation.x) > ((waves[k].s[i].scale.x) * 20)
 			    || fabs(waves[k].s[i - 1].translation.z - waves[k].s[i].translation.z) > 0) {
 			  if (waves[k].s[i].translation.x > 25) {
 			    moveMinion(k, i, 0);
 			    break;
 
-			//Iz predhodne pozicihe racunamo sledecu
+			  //Iz predhodne pozicihe racunamo sledecu
               }else if (waves[k].s[i].translation.x == fullPath[j - speed].p.x
 				 && waves[k].s[i].translation.z == fullPath[j - speed].p.z) {
 			    moveMinion(k, i, j);
 			    break;
-			}
+			  }
 		    }
-        		}
-    	    }
+		  }
+	  }
 	}
     }
 }
@@ -129,17 +127,17 @@ void moveShot(int i, int j, int k)
     double xFactor = 0.0, zFactor = 0.0;
     if (target.x > origin.x){
 	   xFactor = 0.5;
-   }else if (target.x == origin.x){
-	xFactor = 0.0;
+	}else if (target.x == origin.x){
+	  xFactor = 0.0;
     }else if (target.x < origin.x){
-	xFactor = -0.5;
+	  xFactor = -0.5;
     }
     if (target.z > origin.z){
-	       zFactor = 0.5;
+	  zFactor = 0.5;
     }else if (target.z == origin.z){
-	       zFactor = 0.0;
+	  zFactor = 0.0;
     }else if (target.z < origin.z){
-	zFactor = -0.5;
+	  zFactor = -0.5;
     }
     shots[i].p.x += xFactor;
     shots[i].p.z += zFactor;
@@ -150,20 +148,21 @@ void moveShot(int i, int j, int k)
 {
     int i, j;
     for (i = 0; i < lastShot; i++) {
-	    shot s = shots[i];
-	for (j = 0; j < Length(waves[waveNumber - 1].s); j++) {
+	    //shot s = shots[i];
+	  for (j = 0; j < Length(waves[waveNumber - 1].s); j++) {
 	    if (waves[waveNumber - 1].s[j].inPlay) {
-		moveShot(i, waveNumber - 1, j);
+		  moveShot(i, waveNumber - 1, j);
 		break;		//ispalujemo hitac samo prema prvom vojniku u talasu
 	    }
-    	}
+	  }
     }
 }
 
 //Animacija kula, okretanje vrhova kula
 void moveTowerTops(void)
 {
-    if (moveTowerTopsB){
+  if (moveTowerTopsB){
 	towerTh = (towerTh + 2) % 360;
-}
+  }
+  
 }

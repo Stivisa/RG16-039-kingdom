@@ -8,10 +8,11 @@ void board(void)
     glPushMatrix();
 
     //vezujemo teksturu
-    currentTexture = textures[TEX_GRASS];
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, currentTexture);
-
+	if (renderMode == DEF_RENDER) {
+	  currentTexture = textures[TEX_GRASS];
+	  glEnable(GL_TEXTURE_2D);
+	  glBindTexture(GL_TEXTURE_2D, currentTexture);
+	}
     //crtamo poligon
     glEnable(GL_POLYGON_OFFSET_FILL);
     glPolygonOffset(2, 1);
@@ -102,13 +103,17 @@ void soldierModel(soldier s2)
     glPushMatrix();
     glTranslated(s2.translation.x, s2.translation.y, s2.translation.z);
     glRotated(s2.rotation.y, 0, 1, 0);
-    glRotated(s2.rotation.x, 1, 0, 0);
-    glRotated(s2.rotation.z, 0, 0, 1);
-    glScaled(s2.scale.x, s2.scale.y, s2.scale.z);
-    glColor3f((double) s2.rgb.r / 100, (double) s2.rgb.g / 100,
-	      (double) s2.rgb.b / 100);
+	glScaled(s2.scale.x, s2.scale.y, s2.scale.z);
+    glColor3f((double) s2.rgb.r / 100, (double) s2.rgb.g / 100,(double) s2.rgb.b / 100);
     glCallList(s2.type);
 
+	if (showCollisionDetection) {
+	  glColor3f(1,1,0);
+	  glTranslated(-2,4,-0.5);
+	  glutSolidSphere(5,16,16);
+	}
+	glColor3fv(white);
+	
     glPopMatrix();
 
 }
@@ -157,7 +162,7 @@ void wall(double x, double y, double z,
     cube(0, 2, 0, 0.2, 1, 1, 0);
     glPopMatrix();
 
-    /* top blocks */
+    //vrhovi zida
     glPushMatrix();
     glTranslated(0, 5, 0);
     cube(0, 0, 1.3, 0.2, 1, 0.7, 0);

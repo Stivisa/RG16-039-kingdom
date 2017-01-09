@@ -67,7 +67,6 @@ float E[] = { 0, DEF_Y_FLOOR, 0, 0 };	/* tacka ravni*/
 
 //vojnici
 int soldierObj = DEF_SOLDIER_OBJ;
-soldier s;
 wave waves[DEF_LAST_WAVE];	//sadrzi talase vojnika
 soldier soldiers[DEF_MINION_PER_WAVE_SIZE];	//Zadrzi vojnike
 
@@ -88,7 +87,6 @@ int emission = DEF_EMISSION;	// emission intensity %
 int specular = DEF_SPECULAR;	// specular intensity %
 int shininess = DEF_SHININESS;	//odsjaj
 float shinyvec[1] = { 1 };	//vrednost odsjaja
-
 float lightY = DEF_L_Y;		//elevation of light
 float white[] = { 1, 1, 1, 1 };
 
@@ -206,24 +204,20 @@ tower tower_data[16] = {
      "Advanced Ice", 1, 12, 7, 4, 0, 55,
      "Just your typical ice tower - with spikes!"},
 
-    {0, OBJ_EARTH, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH,
-     {5, 5, 5},
+    {0, OBJ_EARTH, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH,{5, 5, 5},
      "Earth", 1, 10, 8, 6, 0, 60, "Just your typical earth tower"},
-    {0, OBJ_EARTH2, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH,
-     {5, 5, 5},
+    {0, OBJ_EARTH2, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH,{5, 5, 5},
      "Advanced Earth", 1, 12, 8, 6, 0, 60,
      "Just your typical earth tower - with spikes!"},
 
-    {0, OBJ_BASIC, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK,
-     {5, 5, 5},
+    {0, OBJ_BASIC, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK,{5, 5, 5},
      "Basic", 1, 5, 3, 4, 0, 10, "A basic tower"},
     {0, OBJ_ADV, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK, {5, 5, 5},
      "Advanced", 1, 7, 4, 4, 0, 15, "A basic tower - with spikes!"},
 
     {0, OBJ_CONE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK, {5, 5, 5},
      "Cone", 1, 7, 6, 4, 0, 20, "A cone tower"},
-    {0, OBJ_ADV_CONE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK,
-     {5, 5, 5},
+    {0, OBJ_ADV_CONE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK,{5, 5, 5},
      "Advanced Cone", 1, 9, 6, 4, 0, 25, "A cone tower - with spikes!"},
 
     {0, OBJ_SQUARE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK, {5, 5, 5},

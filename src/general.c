@@ -166,14 +166,13 @@ point findMousePosition(int x, int y)
     glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
     glGetDoublev(GL_PROJECTION_MATRIX, projection);
 
-    winX = (float) x;
-    winY = (float) viewport[3] - (float) y - 1;
+    winX = (float)x;
+    winY = (float)viewport[3] - (float)y - 1;
     //postavljemo Z pociziju
     glReadPixels(x, (int) winY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
 
     /* postvaljamo posX, posY, posZ */
-    gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX,
-		 &posY, &posZ);
+    gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
 
     //informacije za debagovanje
     if (debug) {

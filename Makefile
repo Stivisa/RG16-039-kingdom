@@ -1,20 +1,14 @@
-PROGRAM = Kingdom
-CC = gcc
-CFLAGS = -Wall -c
-LDFLAGS =  -lGL -lGLU -lglut -lm
-DEP=defines.h prototypes.h kingdom_main.h structs.h
-OBJ= kingdom_main.o general.o globals.o drawing.o init.o screen.o window.o models.o print.o loadTexture.o loadObject.o sidebar.o shapes.o towers.o shadows.o animations.o collision.o gameplay.o
+game: sub-make
+	mv src/Kingdom .
 
-%.o: %.c $(DEP)
-	$(CC) $(CFLAGS) -c -o $@ $<
+sub-make: 
+	$(MAKE) -C src/
 
-$(PROGRAM): $(OBJ)
-	$(CC) $(LDFLAGS) -o $(PROGRAM) $^
 
 .PHONY: clean beauty
 
 clean:
-	-rm *.o $(PROGRAM) *~
+	-rm src/*.o src/$(PROGRAM) 
 
 beauty:
-	indent -kr *.c
+	indent -kr src/*.c

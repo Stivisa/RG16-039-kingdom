@@ -36,6 +36,7 @@ void drawPath(void);
 void drawBackground(double d);
 void drawObjects(void);
 void drawKeep(void);
+void drawShots(void);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);

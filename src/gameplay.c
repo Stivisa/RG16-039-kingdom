@@ -13,17 +13,16 @@ int calculateDamageToMinion(int k, int j, int i)
     return waves[k].s[j].health;
 }
 
-    //Odredju da li korisnik moze da kupi datu kulu i postavlja zadate vrednosti za tu kulu
-
+//Odredju da li korisnik moze da kupi datu kulu i postavlja zadate vrednosti za tu kulu
 void canUserBuyTower(int newObjectSelected)
 {
     if (money >= tower_data[objectSelected - 1].cost) {
-	info = "cha-ching$ thanks buddy";
-	setCurrentTowerData(objectSelected);
-    } else {
-	info = "Not enough $$$.";
-	objectSelected = DEF_OBJ_SEL;
-	preview_tower.id = DEF_OBJ_SEL;
+	  info = "cha-ching$ thanks buddy";
+	  setCurrentTowerData(objectSelected);
+    }else {
+	  info = "Not enough $$$.";
+	  objectSelected = DEF_OBJ_SEL;
+	  preview_tower.id = DEF_OBJ_SEL;
     }
 }
 
@@ -46,14 +45,14 @@ void modifyMoney(int what, int amount)
 {
     //kupujemo
     if (what == 0) {
-	money -= amount;
-    }
+	  money -= amount;
+    
     //Ubijamo
-    else if (what == 1) {
-	money += amount;
-    }
+	}else if (what == 1) {
+	  money += amount;
+    
     //Prodajemo TODO: treba implementirati
-    else if (what == 2) {
+	}else if (what == 2) {
 	money += amount;
     }
 }

@@ -59,7 +59,6 @@ extern int backgrounds[6];
 
 //vojnici
 extern int soldierObj;
-extern soldier s;
 extern wave waves[DEF_LAST_WAVE];
 extern soldier soldiers[DEF_MINION_PER_WAVE_SIZE];
 
@@ -79,9 +78,7 @@ extern int shininess;
 extern float shinyvec[1];
 extern float lightY;
 extern float white[];
-extern int lightPh;
 
-extern int renderMode;
 
 //Pucnjevi i detekcija udara
 extern int showCollisionDetection;
@@ -114,6 +111,7 @@ extern tower tower_data[16];
 extern point preview_points[DEF_CURRENT_OBJS_SIZE];
 extern int preview;
 extern int objectSelected;
+extern int renderMode;
 extern int lastCurrentObject;
 extern int renderMode;
 extern int objectPicked;

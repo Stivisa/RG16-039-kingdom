@@ -55,7 +55,7 @@ void cube(double x, double y, double z, double dx, double dy, double dz,
 	  double th)
 {
 
-    float emissions[] = { 0, 0, 0.01 * emission, 1 };
+    float emissions[] = { 0, 0, 0.01 * emission, 1};
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shinyvec);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, emissions);

@@ -115,17 +115,17 @@ void windowKey(unsigned char key, int x, int y)
 	  shininess += 1;
 
     //Selekcija kula
-}else if (key == '4'){
+	}else if (key == '4'){
 	  changeObjectSelected(OBJ_FIRE);
-  }else if (key == '5'){
+	}else if (key == '5'){
 	  changeObjectSelected(OBJ_FIRE2);
-  }else if (key == '6'){
+	}else if (key == '6'){
 	  changeObjectSelected(OBJ_ICE);
-  }else if (key == '7'){
+	}else if (key == '7'){
 	  changeObjectSelected(OBJ_ICE2);
-  }else if (key == '8'){
+	}else if (key == '8'){
 	  changeObjectSelected(OBJ_EARTH);
-  }else if (key == '9'){
+	}else if (key == '9'){
 	  changeObjectSelected(OBJ_EARTH2);
 	}else if (key == '0'){
 	  changeObjectSelected(DEF_OBJ_SEL);
@@ -133,6 +133,8 @@ void windowKey(unsigned char key, int x, int y)
 	  changeObjectSelected(OBJ_BASIC);
 	}else if (key == '2'){
 	  changeObjectSelected(OBJ_ADV);
+	}else if(key == '3'){
+	  changeObjectSelected(OBJ_SQUARE);
     //preview ukljucenje
 	}else if (key == 'w' || key == 'W') {
 	  preview = 1 - preview;

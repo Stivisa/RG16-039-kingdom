@@ -48,7 +48,7 @@
 #define DEF_COLLISION 0
 
 //Definicianje promenljivih vezane za animaciju
-#define DEF_INFO "Informacije o igri"
+#define DEF_INFO "Game information here"
 #define DEF_GAME_STARTED 0
 #define DEF_GAME_PAUSED 1
 #define DEF_GAME_SPEED 30
@@ -128,15 +128,11 @@
 #define DEF_SPECULAR 0
 #define DEF_SHININESS 0
 #define DEF_L_Y 0
-#define DEF_L_PH 90
 
-//Definisanje da li hocemo da renedrujemo objekte u igri
-#define DEF_RENDER 1
 
 
 
 //Putanja
-#define DEF_MINION_OBJ 0
 #define DEF_FULL_PATH_LEN 50
 #define DEF_NORTH 270
 #define DEF_EAST 180

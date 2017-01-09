@@ -30,7 +30,7 @@ void sidebarDisplay(void)
 				"[2] advanced");
     sidebarRow(windowWidth / 5, DEF_SIDEBAR_HEIGHT - DEF_TEXT_Y_OFFSET * ++line, OBJ_SQUARE,
 				"[3] square");
-    sidebarRow(windowWidth / 3, DEF_SIDEBAR_HEIGHT - DEF_TEXT_Y_OFFSET * ++line, OBJ_FIRE,
+    sidebarRow(windowWidth / 5, DEF_SIDEBAR_HEIGHT - DEF_TEXT_Y_OFFSET * ++line, OBJ_FIRE,
 			  "[4] fire");
 
 	line = 3;
@@ -106,39 +106,35 @@ void sidebarRow(int x, int y, int obj, char *text)
  */
 void sidebarMouse(int btn, int state, int x, int y)
 {
-    int lineUp = 6;
-    int lineDown = 7;
+    int lineUp1 = 2;
+    int lineDown1 = 3;
+	int lineUp2=2;
+	int lineDown2=3;
     //Samo levi klik misa
     if (btn != GLUT_LEFT_BUTTON || state != GLUT_DOWN){
 	  return;
 	}
     //Pozicija odakle startuje mis
-    if (y < DEF_SIDEBAR_HEIGHT && y >= 5) {
-	  if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 5 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+    if (y < DEF_SIDEBAR_HEIGHT-5 && y >= 5) {
+	  if (y >= DEF_TEXT_Y_OFFSET * ++lineUp1 + 5 && y < DEF_TEXT_Y_OFFSET * ++lineDown1 + 9 && x>=windowWidth/5 && x<windowWidth/3){
 	    changeObjectSelected(DEF_OBJ_SEL);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp1 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown1 + 9 && x>=windowWidth/5 && x<windowWidth/3){
 	    changeObjectSelected(OBJ_BASIC);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp1 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown1 + 9 && x>=windowWidth/5 && x<windowWidth/3){
 	    changeObjectSelected(OBJ_ADV);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
-	    changeObjectSelected(OBJ_CONE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
-	    changeObjectSelected(OBJ_ADV_CONE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp1 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown1 + 9 && x>=windowWidth/5 && x<windowWidth/3){
 	    changeObjectSelected(OBJ_SQUARE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
-	    changeObjectSelected(OBJ_ADV_SQUARE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp1 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown1 + 9 && x>=windowWidth/5 && x<windowWidth/3){
 	    changeObjectSelected(OBJ_FIRE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp2 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown2 + 9 && x>=windowWidth/3 && x<windowWidth/2){
 	    changeObjectSelected(OBJ_FIRE2);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp2 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown2 + 9 && x>=windowWidth/3 && x<windowWidth/2){
 	    changeObjectSelected(OBJ_ICE);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp2 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown2 + 9 && x>=windowWidth/3 && x<windowWidth/2){
 	    changeObjectSelected(OBJ_ICE2);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp2 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown2 + 9 && x>=windowWidth/3 && x<windowWidth/2){
 	    changeObjectSelected(OBJ_EARTH);
-	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown + 9){
+	  }else if (y >= DEF_TEXT_Y_OFFSET * ++lineUp2 + 9 && y < DEF_TEXT_Y_OFFSET * ++lineDown2 + 9 && x>=windowWidth/3 && x<windowWidth/2){
 	    changeObjectSelected(OBJ_EARTH2);
 	  }
 	}

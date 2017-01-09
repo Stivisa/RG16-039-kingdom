@@ -23,7 +23,7 @@ void basicTower(tower t)
 
     //velicina oblasti koju kula moze da napada
     if (t.range > -1 && showAttackRadius) {
-	circle(t.range);
+	  circle(t.range);
     }
 
     glPopMatrix();
@@ -33,12 +33,9 @@ void basicTower(tower t)
 //Sastoji se od osnovne kule plus bodlje
 void advancedTower(tower t)
 {
-    tower t2 =
-	{ 0, OBJ_BASIC, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, t.texture, {1,
-									1,
-									1},
-    t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
-    };
+    tower t2 = { 0, OBJ_BASIC, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, t.texture, {1, 1, 1},
+				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
+	};
     glPushMatrix();
     glTranslated(t.translation.x, t.translation.y, t.translation.z);
     glRotated(t.rotation.y, 0, 1, 0);
@@ -92,7 +89,7 @@ void coneTower(tower t)
 void advancedConeTower(tower t)
 {
     tower t2 ={ 0, OBJ_CONE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, t.texture, {1, 1, 1},
-			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
 	};
     
 	glPushMatrix();
@@ -144,7 +141,7 @@ void squareTower(tower t)
 void advancedSquareTower(tower t)
 {
     tower t2 ={ 0, OBJ_SQUARE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, t.texture, {1, 1, 1},
-			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
     
 	glPushMatrix();
@@ -174,7 +171,7 @@ void advancedSquareTower(tower t)
 void fireTower(tower t)
 {
     tower t2 ={ 0, OBJ_FIRE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_FIRE, {1, 1, 1},
-				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
     glPushMatrix();
     glTranslated(t.translation.x, t.translation.y, t.translation.z);
@@ -194,7 +191,7 @@ void fireTower(tower t)
 void advanceFireTower(tower t)
 {
     tower t2 ={ 0, OBJ_FIRE2, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_FIRE, {1, 1, 1},
-			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
     glPushMatrix();
     glTranslated(t.translation.x, t.translation.y, t.translation.z);
@@ -214,7 +211,7 @@ void advanceFireTower(tower t)
 void iceTower(tower t)
 {
     tower t2 ={ 0, OBJ_ICE, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_ICE, {1, 1, 1},
-				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
 	
     glPushMatrix();
@@ -235,7 +232,7 @@ void iceTower(tower t)
 void advanceIceTower(tower t)
 {
     tower t2 ={ 0, OBJ_ICE2, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_ICE, {1, 1, 1},
-			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
     
 	glPushMatrix();
@@ -256,7 +253,7 @@ void advanceIceTower(tower t)
 void earthTower(tower t)
 {
     tower t2 ={ 0, OBJ_EARTH, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH, {1, 1, 1},
-			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+			  t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
 	
     glPushMatrix();
@@ -277,7 +274,7 @@ void earthTower(tower t)
 void advanceEarthTower(tower t)
 {
     tower t2 = { 0, OBJ_EARTH, 1, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}, TEX_EARTH, {1, 1, 1},
-				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Opis"
+				t.name, 1, t.range, t.damage, t.fireRate, 0, t.cost, "Description"
     };
     
 	glPushMatrix();
