@@ -10,7 +10,7 @@
 #define Length(x) (sizeof(x)/sizeof *(x))
 
 // pocetne vrednosti ekrana 
-#define DEF_FULL_SCREEN 1
+#define DEF_FULL_SCREEN 0
 #define DEF_WINDOW_HEIGHT 800
 #define DEF_WINDOW_WIDTH 1000
 
