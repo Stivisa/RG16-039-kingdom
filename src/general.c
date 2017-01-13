@@ -11,7 +11,8 @@ void redisplayAll(void)
     //menjamo poziciju glavnog prozora
     screenReshape(windowWidth,windowHeight - DEF_SPACER - DEF_SIDEBAR_HEIGHT);
     glutPostRedisplay();
-
+	
+	
     //menjamo velicinu sporednog prozora
     glutSetWindow(sidebar);
     sidebarReshape(windowWidth, DEF_SIDEBAR_HEIGHT);
@@ -56,7 +57,7 @@ void reset(void)
     lightPh = DEF_L_PH;
     moveTowerTopsB = DEF_MOVE_TOWER_TOPS;
     towerTh = DEF_TOWER_TH;
-
+	
     //resetujemo pomenljive vezane za status igre
     lives = DEF_LIVES;
     money = DEF_MONEY;

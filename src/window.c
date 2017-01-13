@@ -115,7 +115,7 @@ void windowKey(unsigned char key, int x, int y)
 	  shininess += 1;
 	//ukljucenje iskljucenje sume, zbog optimizacije igre, nizak fps
 	}else if(key == 'f'){ 
-	   forest= 1 - forest; 
+	   forest= 1 - forest;
     //Selekcija kula
 	}else if (key == '4'){
 	  changeObjectSelected(OBJ_FIRE);

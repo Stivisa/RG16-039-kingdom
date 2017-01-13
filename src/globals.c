@@ -5,7 +5,6 @@ char *windowName = "Kindoms Tower Defense";	//Naziv prozora
 int windowHeight = DEF_WINDOW_HEIGHT;	//pocetna visina prozora
 int windowWidth = DEF_WINDOW_WIDTH;	//pocetna sirina prozora
 GLuint window, screen, sidebar;
-
 int debug = DEF_DEBUG;
 
 //stil fonta

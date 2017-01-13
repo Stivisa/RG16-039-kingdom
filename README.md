@@ -1,6 +1,7 @@
 # RG16-039-kingdom
 
-Tip igre Tower Defense, kule se biraju preko misa pritiskom na naziv kule, ili stiskanjem broja na tastaturi za zadati broj
+Tip igre Tower Defense, kule se biraju preko misa pritiskom na naziv kule, ili stiskanjem broja na tastaturi za zadati broj i postavljanjem kule na mapi
+Zbog loseg fps, postoji mogucnost da se iskljuci suma pri cemu se brzina igre drasticno poboljsava
 
 Komande u igri:
  - Osnovne komande za igru:
@@ -36,9 +37,10 @@ Komande u igri:
  >- **g** - ukljucuje mrezu
  >- **v** - ukljucuje prikaz vrednosti
 
+ ![alt tag](./Kingdom.png)
 
 Osnovna raspodela koda:
-  - src/
+  - src:
   >- **kingdom_main.c** -inicijalizacija GLUT-a
   >- **kingdom_main.h**  -osnovne biblioteke i eksterne promenljive
   >- **defines.h** - definicije globalnih promenljivih
@@ -60,7 +62,7 @@ Osnovna raspodela koda:
   >- **shadows.c** -funkcija koja iscrtava senke na zemlju
   >- **shapes** - funkcije koje iscrtavaju osnovne oblike(sfera, valjak, kupa, piramida, kocka ...)
   >- **towers.c** -funkcije koje generisu kule za igru
-  - models/ 
+  - models: 
   >- modeli aviona, tenka i vojnika, zato sto nemam implementiranu animaciju kretenja za modele vojnika, nisu primenjivani u igri iako je pocetna ideja bila zasnovana na njima, umesto toga resio sam da koristim avione
-  - images/
+  - images:
   >- ovde se nalaze osnovne teksture koje se koriste u igri, pozadine i teksture kula
