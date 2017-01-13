@@ -2,10 +2,12 @@
 
 //Funkcije za iscrtavanje osnovnih figura
 
-/*Crtamo kvadrate, 
-*ali zavisno od parametra da bi mogli da 
-*primenimo u crtanju drugih figura
-*/
+/* Crtamo kvadrate,  ali zavisno od parametra na kojoj poziciji da bi mogli da
+ * primenimo u crtanju drugih figura
+ * argumenti: int s - pozicija kvadrata
+ * 			  int a,b,c,d - strana kvadrata koje koristimo iz cube_v globalne promenljive
+ * 
+ */
 void square(int s, int a, int b, int c, int d)
 {
     glBegin(GL_POLYGON);
@@ -46,11 +48,16 @@ void square(int s, int a, int b, int c, int d)
     glEnd();
 }
 
-/*Crtamo kocku
- * Na x,y,z kordinatama
- * dimenzija dx,dy,dz
- * rotiranje za th oko y ose
-*/
+/* Funkcija za crtanje kocke
+ * argumenti: double x - pzicija kocke na x osi
+ * 			  double y - pozicija kocke na y osi
+ * 			  double z - pozicija kocke na z osi
+ * 			  double dx - velicina kocke po x osi, duzina kocke
+ * 			  double dy - velicina kocke po y osi, visina kocke
+ * 			  double dz - velicina kocke po z osi, sirina kocke
+ * 			  double th - rotacija kocke za ugao oko y ose
+ * 
+ */
 void cube(double x, double y, double z, double dx, double dy, double dz,
 	  double th)
 {
@@ -92,7 +99,12 @@ void cube(double x, double y, double z, double dx, double dy, double dz,
     glDisable(GL_TEXTURE_2D);
 }
 
-//Crtamo najvisu tacku
+/*
+ * Funkcija za crtanje tacaka 
+ * argumenti: double th - 
+ * 			  double ph - 
+ * 
+ */
 void vertex(double th, double ph)
 {
     double x = Sin(th) * Cos(ph);
@@ -104,7 +116,11 @@ void vertex(double th, double ph)
     glVertex3d(x, y, z);
 }
 
-//crtamo krug precnika r
+/*
+ * Funkcija za crtanje krug 
+ * argumenti: int r - poluprecnik kruga
+ * 
+ */
 void circle(int r)
 {
     int th;
@@ -118,7 +134,15 @@ void circle(int r)
     glEnd();
 }
 
-//crtamo loptu
+/*
+ * Funkcija za crtanje sfere
+ * argumenti: double x - pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double r - precnik sfere
+ * 			  double r - rotacija sfere po y osi
+ * 
+ */
 void sphere(double x, double y, double z, double r, double rot)
 {
     int th, ph;
@@ -156,7 +180,16 @@ void sphere(double x, double y, double z, double r, double rot)
     glDisable(GL_TEXTURE_2D);
 }
 
-//crtamo kupu
+/* 
+ * Funkcija za crtanje kupe
+ * argumenti: double x - pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double r - precnik kupe
+ *			  double h - visina kupe
+ * 			  int deg - ugao nagiba kupe
+ *
+ */ 
 void cone(double x, double y, double z, double r, double h, int deg)
 {
     int k;
@@ -210,7 +243,15 @@ void cone(double x, double y, double z, double r, double h, int deg)
     glDisable(GL_TEXTURE_2D);
 }
 
-//crtamo valjak
+/* 
+ * Funkcija za crtanje valjka
+ * argumenti: double x - pozicija valjka na x osi
+ * 			  double y - pozicija valjka na y osi
+ * 			  double z - pozicija valjka na z osi
+ * 			  double r - precnik valjka
+ *			  double h - visina valjka
+ *
+ */ 
 void cylinder(double x, double y, double z, double r, double h)
 {
     int i, k;
@@ -255,10 +296,15 @@ void cylinder(double x, double y, double z, double r, double h)
 }
 
 /*
- *  Crtanje piramide 
- *     na (x,y,z)
- *     dimenzija (dx,dy,dz)
- *     rotiranje za th ugao oko y ose
+ * Funkcija za crtanje piramide 
+ * argumenti: double x - pozicija piramide na x osi
+ *			  double y - pozicija piramide na y osi
+ *			  double z - pozicija piramide na z osi
+ *			  double dx - velicina piramide po x osi, duzina piramide
+ *			  double dy - velicina piramide po y osi, visina piramide
+ *			  double dz - velicina piramide po z osi, sirina piramide
+ *			  double th - rotacija piramide za ugao oko y ose  
+ *     
  */
 void pyramid(double x, double y, double z,
 	     double dx, double dy, double dz, double th)
@@ -277,10 +323,15 @@ void pyramid(double x, double y, double z,
 
 
 /*
- *  Crtamo zvezdu
- *     na (x, y, z)
- *     dimenzija dx, dy, dz
- *     rotirane za th ugao oko y ose
+ * Funkcija za crtanje zvezde
+ * argumenti: double x - pozicija zvezde na x osi
+ * 			  double y - pozicija zvezde na y osi
+ * 			  double z - pozicija zvezde na z osi
+ * 			  double dx - velicina zvezde po x osi, duzina zvezde
+ * 			  double dy - velicina zvezde po y osi, visina zvezde
+ * 			  double dz - velicina zvezde po z osi, sirina zvezde
+ * 			  double th - rotacija zvezde za ugao oko y ose
+ * 
  */
 void star(double x, double y, double z,
 	  double dx, double dy, double dz, double th)
@@ -326,12 +377,16 @@ void star(double x, double y, double z,
 }
 
 /*
- *  Crtamo siljkove
- *     na (x, y, z)
- *     precnika r, visine h,
- *     rotirano za ox oko x ose
- *     rotirano za oy oko y ose
- *     rotirano za oz oko y ose
+ * Funkcija za crtanje siljkova
+ * argumenti: double x - pozicija siljka na x osi
+ * 			  double y - pozicija siljka na y osi
+ * 			  double z - pozicija siljka na z osi
+ * 			  double r - precnik siljka
+ * 			  double h - visina siljka
+ * 			  double ox - rotacija siljka oko x ose
+ * 			  double oy - rotacija siljka oko y ose
+ * 			  double oz - rotacija siljka oko z ose
+ *    
  */
 void spike(double x, double y, double z,
 	   double r, double h, int deg, double ox, double oy, double oz)

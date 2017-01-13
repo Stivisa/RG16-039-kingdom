@@ -1,5 +1,10 @@
 #include "kingdom_main.h"
 
+/* FUnkcije koje se nalaze u ovom fajlu pomazu pro obradi glavnog
+ * prozora gde se sve animacije odvijaju.
+ */
+
+
 //inicijalizacija ekrana
 void displayInit(void)
 {
@@ -11,7 +16,7 @@ void displayInit(void)
     glLoadIdentity();
 }
 
-//racunanje odakle gledamo
+//racunanje odakle gledamo, pozicija kamere
 void displayEye(void)
 {
     double Ex = -2 * dim * Sin(th) * Cos(ph);
@@ -21,7 +26,7 @@ void displayEye(void)
     gluLookAt(Ex + ecX, Ey, Ez + ecZ, ecX, ecY, ecZ, 0, Cos(ph), 0);
 }
 
-//prikazivanje scene
+//Funckija za inicijalizaciju ekrana, kamere i iscrtavanje scene
 void screenDisplay(void)
 {
     //ciscenje ekrana i postavljane kamere
@@ -41,7 +46,13 @@ void screenDisplay(void)
     errCheck("display sanity check");
 }
 
-//odredjivanje projekcije
+/* 
+ * Funkcija za postavljanje matrice projekcije
+ * argumenti: double fov - ugao polje pogleda(field of view) u y direkciji
+ * 			  double asp - odnos velicina polje pogleda prema x, uglavnom ide x(width)/y(height)
+ * 			  double dim - velicina pogleda po z osi
+ * 
+ */
 void screenProject(double fov, double asp, double dim)
 {
     glMatrixMode(GL_PROJECTION);
@@ -51,7 +62,12 @@ void screenProject(double fov, double asp, double dim)
     glLoadIdentity();
 }
 
-//menjnaje sike kada dodje do menjanje velicine prozora
+/*
+ * Funkcija za menjanje velicinine prikaza prozora kada korisnik menja velicinu prozora
+ * argumenti: int width - sirina novog prozora
+ * 			  int height - visina novog prozora
+ * 
+ */
 void screenReshape(int width, int height)
 {
     //postavljamo odgovarajucu proporciju
@@ -63,6 +79,15 @@ void screenReshape(int width, int height)
     screenProject(fov, asp, dim);
 }
 
+
+/* 
+ * Funkcija za obradu pokreta misa na glavnom prozoru
+ * argumenti: int btn - dugme koje je kliknuto
+ * 			  int state - u kom stanju je dugme da li je pritisnuto ili pusteno
+ * 			  int x - pozicija misa na x osi
+ * 			  int y - pozicija misa na y osi
+ * 
+ */
 void screenMouse(int btn, int state, int x, int y)
 {
     point p;
@@ -124,8 +149,12 @@ void screenMouse(int btn, int state, int x, int y)
 }
 
 
-//Omogucava da imamo pregled kula u igrici, kada gledamo gde cemo da je smestimo
-
+/*
+ * Omogucava da imamo pregled kula u igrici, kada gledamo gde cemo da je smestimo
+ * argumenti: int x - preview pozicija kule na x osi
+ * 			  int y - preview pozicija kule na y osi
+ * 
+ */
 void screenPmotion(int x, int y)
 {
     if (preview && objectSelected != DEF_OBJ_SEL) {

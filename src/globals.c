@@ -26,7 +26,7 @@ int axes = DEF_AXES;		// ukljuci/iskljuci axes
 int grid = DEF_GRID;		// ukljuci/iskljuci grid
 int vals = DEF_VALS;
 int showAttackRadius = DEF_SHOW_ATTACK;
-
+int forest = DEF_FOREST;
 //teksture
 unsigned int textures[17];	//sadrzi nase teksture
 int currentTexture = TEX_DEFAULT;	//ako nije postavljeno nista
@@ -173,7 +173,7 @@ pathCube pathCubes[] = {
 
 
 //Osnovne kule
-tower default_towers[6] = {
+tower default_towers[5] = {
     {0, OBJ_BASIC, 1, {17, 0, -17}, {1, 1, 1}, {0, 0, 0}, TEX_BRICK, {5, 5, 5},
      "Basic", 1, 5, 3, 4, 0, 10, "Description"},
     {0, OBJ_FIRE, 1, {9, 0, -13}, {1, 1, 1}, {0, 0, 0}, TEX_FIRE, {10, 5, 5},
@@ -187,7 +187,7 @@ tower default_towers[6] = {
 };
 
 //Podaci o kulama
-tower tower_data[16] = {
+tower tower_data[12] = {
     /*
        id, tip, igri, translation, scale, rotation, teksture, rgb,
        ime, zona napada, napad, brzina napada, koliko kosta, opis

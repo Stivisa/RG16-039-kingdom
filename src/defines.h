@@ -1,7 +1,7 @@
 
 //definisemo aproksimaciju kosinusa i sinusa u stepenima
-#define Cos(x) (cos(x*3.1415927/180))
-#define Sin(x) (sin(x*3.1415927/180))
+#define Cos(x) (cos((x)*3.1415927/180))
+#define Sin(x) (sin((x)*3.1415927/180))
 
 //ukljucivanje debagovanja
 #define DEF_DEBUG 0
@@ -26,7 +26,7 @@
 //stil teksta
 #define DEF_FONT_STYLE GLUT_BITMAP_HELVETICA_10
 
-//pocetne vredneosti projekcije
+//pocetne vrednosti projekcije
 #define DEF_ASP 1
 #define DEF_DIM 25
 #define DEF_TH 250
@@ -130,7 +130,8 @@
 #define DEF_L_Y 0
 
 
-
+//forest
+#define DEF_FOREST 1
 
 //Putanja
 #define DEF_FULL_PATH_LEN 50

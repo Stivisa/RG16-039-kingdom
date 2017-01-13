@@ -4,8 +4,7 @@
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL |
-			GLUT_DOUBLE);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL | GLUT_DOUBLE);
     glutInitWindowSize(windowWidth, windowHeight);
 
     window = glutCreateWindow(windowName);
@@ -18,7 +17,7 @@ int main(int argc, char **argv)
     glutKeyboardFunc(windowKey);
     glutSpecialFunc(windowSpecial);
 
-    //funckija za postavljanje sve na picetne vrednosti
+    //funckija za postavljanje sve na pocetne vrednosti
     reset();
     //funckija za inicijlizaciju pogleda
     initialize();

@@ -37,6 +37,7 @@ void drawBackground(double d);
 void drawObjects(void);
 void drawKeep(void);
 void drawShots(void);
+void drawForests(void);
 
 //funckije za glavni ekran window.c
 void windowDisplay(void);
@@ -76,10 +77,15 @@ void board();
 void soldierModel(soldier m);
 void pathBlock(pathCube p);
 void path(void);
-void crate(double x, double y, double z,double dx,double dy,double dz,double th);
+//void crate(double x, double y, double z,double dx,double dy,double dz,double th);
 void wall(double x, double y, double z,double dx,double dy,double dz,double th);
 void keep(double x, double y, double z,double dx,double dy,double dz,double th);
 void shotModel(shot s);
+void evergreenTree1(double x, double y, double z,double dx,double dy,double dz, double th);
+void evergreenTree2(double x, double y, double z, double dx,double dy,double dz, double th);
+void evergreenForest(double x, double y, double z, double dx,double dy,double dz, double th);
+void evergreenForest1(double x, double y, double z, double dx,double dy,double dz, double th);
+
 
 //ucitavanje BMP fajl loadTexBMP
 unsigned int loadTexBMP(char *file);

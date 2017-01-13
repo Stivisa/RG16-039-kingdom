@@ -12,10 +12,9 @@ void drawAxes(void)
 {
     //duzina axes-a
     const double len = 5.0;
-    printf("%d", axes);
-
+    
     //crtamo x,y,z osu radi lakseg snalazenja u okruzenju
-    if (axes == 0) {
+    if (axes) {
 	  glDisable(GL_LIGHTING);
 	  glColor3f(1.0, 1.0, 1.0);
 	  glBegin(GL_LINES);
@@ -214,7 +213,7 @@ void drawPath(void)
 void drawLight(void)
 {
     //ako je svetlost aktivirano ili ne
-    if (light == 1) {
+    if (light) {
 
 	  float Ambient[] ={ 0.01 * ambient, 0.01 * ambient, 0.01 * ambient, 1.0 };
 	  float Diffuse[] ={ 0.01 * diffuse, 0.01 * diffuse, 0.01 * diffuse, 1.0 };
@@ -385,7 +384,7 @@ void drawShadows()
     glPushMatrix();
     shadowProjection(Position, E, N);
     //Crtamo objekte samo za koje hocemo senku
-    //drawForests();
+    drawForests();
     drawKeep();
     drawSoldier();
     drawObjects();
@@ -417,6 +416,39 @@ void drawShadows()
     glPopAttrib();
 }
 
+//Funkcija za iscrtavanje sume, da oznacimo zonu gde mogu da se stave kule
+void drawForests(void)
+{
+  
+  if(forest){
+	//Isrtavanje zadnjeg dela sume
+	evergreenForest1(-22,0,-10, 1,1,1, 90);
+	evergreenForest1(-22,0,-20, 1,1,1, 90);
+
+	//Desna strana
+	evergreenForest1(-15,0,-20, 1,1,1, 0);
+	evergreenForest1(-5,0,-20, 1,1,1, 0);
+	evergreenForest1(5,0,-20, 1,1,1, 0);
+	evergreenForest1(15,0,-20, 1,1,1, 0);
+	evergreenForest1(20,0,-20, 1,1,1, 0);
+
+	//Prednja strana
+	evergreenForest1(20,0,-15, 1,1,1, -90);
+	evergreenForest1(20,0,-10, 1,1,1, -90);
+	evergreenForest1(20,0,10, 1,1,1, -90);
+	evergreenForest1(20,0,20, 1,1,1, -90);
+
+	//Leva strana
+	evergreenForest1(15,0,22, 1,1,1, 180);
+	evergreenForest1(10,0,22, 1,1,1, 180);
+	evergreenForest1(0,0,22, 1,1,1, 180);
+	evergreenForest1(-10,0,22, 1,1,1, 180);
+	evergreenForest1(-20,0,22, 1,1,1, 180);
+  }
+	
+}
+
+
 
 /* Glavna funkcija koja povezuje sva iscrtavanja
  * bitan je redosled sta se cega iscrtava da bi
@@ -434,7 +466,7 @@ void drawScene(void)
 	  //Sve sa svetloscu treba da bude sicrano posle funckije drawLight
 	  drawBoard();
 	  drawPath();
-	  //drawForests();
+	  drawForests();
 	  drawKeep();
 	  drawShots();
     }

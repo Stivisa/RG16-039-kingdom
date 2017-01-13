@@ -1,7 +1,7 @@
 #include "kingdom_main.h"
 
 
-//crtamo tablu na kojoj ce biti smestene staze i zemlja
+//crtamo tabelu na kojoj ce biti smestene staze i zemlja
 void board(void)
 {
     int i, j;
@@ -41,7 +41,16 @@ void board(void)
     glPopMatrix();
 }
 
-//dvorac
+/* Funkcija za crtanje dvorca
+ * argumenti: double x - pozicija na x osi
+ *			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ *			  double dx - velicina po x osi, duzina dvorca
+ * 			  double dy - velicina po y osi, visina dvorca
+ * 			  double dz - velicina po z osi, sirina dvorca
+ *			  double th - ugao prema cemu je dvorac nakrenut
+ * 
+ */
 void keep(double x, double y, double z,
 	  double dx, double dy, double dz, double th)
 {
@@ -96,7 +105,11 @@ void keep(double x, double y, double z,
     glPopMatrix();
 }
 
-//praviomo model soldier-a
+/*
+ * Praviomo model soldier-a
+ * argumenti: soldier s2 - model vojnika iz object fajla
+ * 
+ */
 void soldierModel(soldier s2)
 {
     //crtamo vojnika
@@ -119,8 +132,17 @@ void soldierModel(soldier s2)
 }
 
 
-//Zid
-
+/* 
+ * Funkcija za pravljenje zida, koji se kasnije koristi pri konstruisanju dvorca.
+ * argumenti: double x - pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double dx - velicina po x osi, duzina zida
+ * 			  double dy - velicina po y osi, visina zida
+ * 			  double dz - velicina po z osi, sirina zida
+ * 			  double th - ugao rotacije zida 
+ * 
+ */
 void wall(double x, double y, double z,
 	  double dx, double dy, double dz, double th)
 {
@@ -174,7 +196,11 @@ void wall(double x, double y, double z,
 }
 
 
-//crtamo blokove za put
+/* 
+ * crtamo blokove za put
+ * argumenti: pathCube p - kocka gde je iscrtan put
+ *
+ */ 
 void pathBlock(pathCube p)
 {
     glPushMatrix();
@@ -224,7 +250,11 @@ void path(void)
     glPopMatrix();
 }
 
-//Model pucnja
+/*
+ * Model pucnja
+ * argumenti: shot s - pucanj kule
+ * 
+ */
 void shotModel(shot s)
 {
     glPushMatrix();
@@ -234,3 +264,116 @@ void shotModel(shot s)
     currentTexture = textures[TEX_DEFAULT];
     glPopMatrix();
 }
+
+
+/*
+ * Funkcija za crtanje drveta
+ * argumenti: double x -pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double dx - duzina drveta
+ * 			  double dy - visina drveta
+ * 			  double dz - sirina drveta
+ * 			  double th - rotacija po y osi
+ * 
+ */
+void evergreenTree1(double x,double y,double z, double dx,double dy,double dz, double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  //Osnova
+  currentTexture = textures[TEX_WOOD];
+  cylinder(0,-2,0, 0.3,1.0);
+  currentTexture = textures[TEX_POISON];
+  //Srednji deo
+  cone(0,-2,0, 1.3,2,DEF_D);
+  //Vrh
+  cone(0,-1,0, 1,2,DEF_D);
+  currentTexture = textures[TEX_DEFAULT];
+
+  glPopMatrix();
+}
+
+/*
+ * Funkcija za crtanje drveta 2
+ * argumenti: double x -pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double dx - duzina drveta
+ * 			  double dy - visina drveta
+ * 			  double dz - sirina drveta
+ * 			  double th - rotacija po y osi
+ */
+void evergreenTree2(double x,double y,double z, double dx,double dy,double dz, double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+
+  //Osnova
+  currentTexture = textures[TEX_WOOD];
+  cylinder(0,-2,0, 0.5,1.0);
+  currentTexture = textures[TEX_POISON];
+  //Srednji deo
+  cone(0,-2,0, 1.5,3,DEF_D);
+  cone(0,-0.5,0, 1.4,3,DEF_D);
+  //Vrh
+  cone(0,1,0, 1,2,DEF_D);
+  currentTexture = textures[TEX_DEFAULT];
+
+  glPopMatrix();
+}
+
+/*
+ * Funkcija za crtanje sume, crta 4 drveta zajednoevergreenForest
+ * argumenti: double x -pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double dx - duzina drveta
+ * 			  double dy - visina drveta
+ * 			  double dz - sirina drveta
+ * 			  double th - rotacija po y osi
+ */
+void evergreenForest(double x,double y,double z, double dx,double dy,double dz, double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+  //Crtaj sumu
+  evergreenTree1(0,0.3,-1, 1,1,1, 0);
+  evergreenTree1(1.5,-1.3,-2, 0.5,0.5,0.5, 0);
+  evergreenTree2(3,0,0, 1,1,1, 0);
+  evergreenTree2(1,1.5,2, 1.5,1.5,1.5, 0);
+
+  glPopMatrix();
+}
+
+/*
+ * Funkcija za crtanje sume 2, crta 3 sume
+ * argumenti: double x -pozicija na x osi
+ * 			  double y - pozicija na y osi
+ * 			  double z - pozicija na z osi
+ * 			  double dx - duzina drveta
+ * 			  double dy - visina drveta
+ * 			  double dz - sirina drveta
+ * 			  double th - rotacija po y osi
+ */
+void evergreenForest1(double x,double y,double z, double dx,double dy,double dz, double th)
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  glRotated(th,0,1,0);
+  glScaled(dx,dy,dz);
+  //crtaj sumu na osnocu sume 1
+  evergreenForest(-5,0.3,-5, 1.2,1.2,1.2, 270);
+  evergreenForest(0,0,-2, 1,1,1, 180);
+  evergreenForest(2,-0.5,-5, 0.8,0.8,0.8, 0);
+
+  glPopMatrix();
+}
+

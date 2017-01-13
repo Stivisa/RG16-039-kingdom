@@ -1,5 +1,7 @@
+PROGRAM = Kingdom
+
 game: sub-make
-	mv src/Kingdom .
+	mv src/$(PROGRAM) .
 
 sub-make: 
 	$(MAKE) -C src/
@@ -8,7 +10,7 @@ sub-make:
 .PHONY: clean beauty
 
 clean:
-	-rm src/*.o src/$(PROGRAM) 
+	-rm src/*.o $(PROGRAM) 
 
 beauty:
 	indent -kr src/*.c

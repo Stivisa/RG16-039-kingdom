@@ -73,7 +73,7 @@ void checkTowerRange(void)
 			point target = waves[waveNumber - 1].s[j].translation;
 			point tScale = waves[waveNumber - 1].s[j].scale;
 			double distance = sqrt((origin.x - target.x) * (origin.x -target.x) +
-							(origin.z - target.z) * (origin.z -target.z)) - tScale.x;
+								  (origin.z - target.z) * (origin.z -target.z)) - tScale.x;
 			
 			//Proveravamo da li smo u opsegu napada
 			if (distance < towers[i].range) {

@@ -1,6 +1,14 @@
 #include "kingdom_main.h"
 
-//prikazivanje dodatnog prozora
+/* Funkcije za obradu i prikaz pomocnog prozora, gde se nalaze izbori kula, 
+ * kao i vazne informacije za igru
+ */
+
+
+/*
+ * Funkcija za prikaz pomocnog prozora kao i prikaz tekstualnih informacija 
+ * na tom prozoru
+ */
 void sidebarDisplay(void)
 {
     int line = 1;
@@ -76,8 +84,7 @@ void sidebarDisplay(void)
     glutSwapBuffers();
 }
 
- //Menjanje prozora ako dodje do promene velicine
-
+//Funkcija za menjanje pomocnog prozora ako dodje do promene velicine
 void sidebarReshape(int width, int height)
 {
     glViewport(0, 0, width, height);
@@ -89,7 +96,7 @@ void sidebarReshape(int width, int height)
     glClearColor(0.3, 0.3, 0.3, 0.0);
 }
 
-//dodaje red teksta sa na x,y
+//Funkcija za dodavanje red teksta na x,y poziciju 
 void sidebarRow(int x, int y, int obj, char *text)
 {
     glColor3fv(white);
@@ -102,7 +109,7 @@ void sidebarRow(int x, int y, int obj, char *text)
 
 
 /*
- Funkcije za kada je mis pritisnut na sidebar
+ * Funkcije za obradu akcija misa na pomocnom prozoru
  */
 void sidebarMouse(int btn, int state, int x, int y)
 {

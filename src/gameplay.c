@@ -2,23 +2,34 @@
 
 /*
  *  Osnovne funkcije za gameplay igrice, racunanje da li korisnik moze kupiti kulu
-    Stetu koju vojnici nanose i koja se nanosi vojnicima, racunanje para ...
+ *  Stetu koju vojnici nanose i koja se nanosi vojnicima, racunanje para ...
+ *
  */
 
 
-//Funkcija racuna stetu nanetu konkretnom vojniku i vraca trenute helte vojnik
+/*
+ * Funkcija racuna stetu nanetu konkretnom vojniku i vraca trenute helte vojnik
+ * argumenti: int k - redni broj talasa u kome se vojnik nalazi
+ * 			  int j - redni broj vojnika koji je pretrpeo stetu
+ * 			  int i - redni broj hitca koji je pogodio vojnika
+ * return:  int health - vraca ostale health-e nakon pretrpljenog udarca
+ *
+ */
 int calculateDamageToMinion(int k, int j, int i)
 {
     waves[k].s[j].health -= shots[i].damage;
     return waves[k].s[j].health;
 }
 
-//Odredju da li korisnik moze da kupi datu kulu i postavlja zadate vrednosti za tu kulu
+/*
+ * Odredju da li korisnik moze da kupi datu kulu i postavlja zadate vrednosti ukoliko je kula kupljena
+ * argumenti: int newObjectSelected - kula koja je izabrana u sidebar-u
+ */
 void canUserBuyTower(int newObjectSelected)
 {
-    if (money >= tower_data[objectSelected - 1].cost) {
+    if (money >= tower_data[newObjectSelected - 1].cost) {
 	  info = "cha-ching$ thanks buddy";
-	  setCurrentTowerData(objectSelected);
+	  setCurrentTowerData(newObjectSelected);
     }else {
 	  info = "Not enough $$$.";
 	  objectSelected = DEF_OBJ_SEL;
@@ -26,21 +37,28 @@ void canUserBuyTower(int newObjectSelected)
     }
 }
 
-/*Modifikuje helte dvorca zavisnosti da li kupujemo ih ili gubimo
-ih od strane vojnika
+/* 
+ * Modifikuje helte dvorca zavisnosti da li kupujemo ih ili gubimo
+ * ih od strane vojnika
+ * argumenti: int die - da li je dvorac pretrpio udarac 0 ili 1
+ * 			  int damage - koliko je zivota izgubio ako je pretrpeo udarac
  */
 void modifyLives(int die, int damage)
 {
     if (die) {
-	lives -= damage;
+	  lives -= damage;
     } else {
-	//kupujemo
-	lives++;
+	  //kupujemo
+	  lives++;
     }
 }
 
-//Modifikujemo novac zavisno da li kupujemo,ubijamo vojnike ili prodajemo
-
+/*
+ * Modifikujemo novac zavisno da li kupujemo,ubijamo vojnike ili prodajemo
+ * argumenti: int what - koju operaciju radimo, 0 kupujemo kule, 1 ubijamo vojnike, 2 prodajemo kule
+ * 			  int amount - kolicina novca koja se dodaje ili oduzima
+ *
+ */ 
 void modifyMoney(int what, int amount)
 {
     //kupujemo
@@ -51,23 +69,28 @@ void modifyMoney(int what, int amount)
 	}else if (what == 1) {
 	  money += amount;
     
-    //Prodajemo TODO: treba implementirati
+    //Prodajemo TODO: treba implementirati u verziji 2.0
 	}else if (what == 2) {
-	money += amount;
+	  money += amount;
     }
 }
 
 /*
- Funkcija za modifikaciju rezultata na osnovu broja talasa
+ * Funkcija za modifikaciju rezultata na osnovu broja talasa
+ * argumenti: int k - broj talasa iz kog je vojnik koji je izbacen
+ * 			    
  */
 void modifyScore(int k)
 {
-    score += waveNumber * 5;
+    score += k * 5;
 }
 
 
 /*
  *  Funkcija za izbacivanje vojnika iz igre
+ *  argumenti: int k - broj talas iz kog je vojnik
+ * 			   int j - redni broj vojnika kojeg izbacujemo iz igre
+ * 
  */
 void removeMinion(int k, int j)
 {
@@ -77,7 +100,9 @@ void removeMinion(int k, int j)
 }
 
 /*
-    Funkcija za izbacivanje pucnja iz igre
+ * Funkcija za izbacivanje pucnja iz igre
+ * argumenti: int i - redni broj pucnja koji izbacujemo iz igre
+ *
  */
 void removeShot(int i)
 {

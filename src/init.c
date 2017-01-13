@@ -20,8 +20,7 @@ void initialize(void)
 //inicijalizacija ekrana
 void screenInit(void)
 {
-    screen = glutCreateSubWindow(window, 0, 0, windowWidth - DEF_SPACER,
-								  windowHeight - DEF_SIDEBAR_HEIGHT - DEF_SPACER);
+    screen = glutCreateSubWindow(window, 0, 0, windowWidth - DEF_SPACER, windowHeight - DEF_SIDEBAR_HEIGHT - DEF_SPACER);
 
     glutDisplayFunc(screenDisplay);
     glutReshapeFunc(screenReshape);
@@ -35,8 +34,7 @@ void screenInit(void)
 //funkcija za inicijalizaciju prozora sa opcijama
 void sidebarInit(void)
 {
-    sidebar = glutCreateSubWindow(window, 0, windowHeight - DEF_SIDEBAR_HEIGHT,
-								  windowWidth, DEF_SIDEBAR_HEIGHT);
+    sidebar = glutCreateSubWindow(window, 0, windowHeight - DEF_SIDEBAR_HEIGHT, windowWidth, DEF_SIDEBAR_HEIGHT);
     glutDisplayFunc(sidebarDisplay);
     glutReshapeFunc(sidebarReshape);
     glutKeyboardFunc(windowKey);
@@ -142,7 +140,7 @@ void initPath(void)
 //funkcija za inicijalizaciju objekta
 void initObjs(void)
 {
-    soldierObj = loadOBJ("obj-f16.obj");
+    soldierObj = loadOBJ("models/obj-f16.obj");
 }
 
 void initSoldier(void)
@@ -176,9 +174,8 @@ void initSoldier(void)
 
 }
 
-/*Inicijalizacija talasa koji ce biti korisceni
- */
-void initWaves()
+// Inicijalizacija talasa koji ce biti korisceni
+void initWaves(void)
 {
     wave wave = { 0, 1 };
     int i, k;
@@ -200,7 +197,7 @@ void initWaves()
 
 	    if (k < 3) {
 		  soldiers[i].speed = 5 - k;
-		/* minimum speed of 2 */
+		//minimalna brzina 2
 	    } else {
 		  soldiers[i].speed = 2;
 	    }
@@ -215,9 +212,8 @@ void initWaves()
     }
 }
 
-/*inicijalizacija podataka za pucanj
- */
-void initShots()
+// inicijalizacija podataka za pucanj
+void initShots(void)
 {
     shot s = { 0, {0, 0, 0}, TEX_DEFAULT, 0 };
     int i;
@@ -239,9 +235,7 @@ void initDefaultTowers(void)
 }
 
 
-/*
- *  Inicijalizacija tacaka na koje kula sme da se smesti
- */
+// Inicijalizacija tacaka na koje kula sme da se smesti
 void initPreviewPoints(void)
 {
     point valid_points[DEF_CURRENT_OBJS_SIZE] = {

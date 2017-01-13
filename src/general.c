@@ -150,7 +150,7 @@ void setCurrentTowerData(int type)
 /* Funkcija za trazenje pozicija misa
  * arguments: int x - x pozicija misa na ekranu
  *			  int y - y pozicija misa na ekranu
- * return: point point - vreca argument tipa point iz structs.h
+ * return: point point - vraca argument tipa point iz structs.h
  */
 point findMousePosition(int x, int y)
 {
@@ -209,9 +209,9 @@ point findPreviewPosition(int x, int y)
     returnP.z = DEF_BAD_POINT;
     exists = 0;
 
-    /*trenutna velicina DEF_CURRENT_OBJS_SIZE je
-	*velicina validnih pozicija na koje moze da se smeste kule
-    */
+    /* trenutna velicina DEF_CURRENT_OBJS_SIZE je
+	 * velicina validnih pozicija na koje moze da se smeste kule
+     */
     for (i = 0; i < DEF_CURRENT_OBJS_SIZE; i++) {
 	  /* proveravamo +/-2 od date tacke, da bi ubrzali pretragu */
 	  if (finalX >= (preview_points[i].x - 2)
@@ -241,7 +241,7 @@ point findPreviewPosition(int x, int y)
 
 
 /*
-    Inkrementiramo boje da bi dobili jedinstvenu kompoziziju boja za nase biranje objekata
+ * Inkrementiramo boje da bi dobili jedinstvenu kompoziziju boja za nase biranje objekata
  */
 void incrementCurrentRGB(void)
 {
@@ -260,7 +260,7 @@ void incrementCurrentRGB(void)
 }
 
 /*
-   Odredjujemo boju piksela i poredimo sa bojom naseg objekta da bi videli sta je odabrano
+ * Odredjujemo boju piksela i poredimo sa bojom naseg objekta da bi videli sta je odabrano
  */
 void processPicks(void)
 {

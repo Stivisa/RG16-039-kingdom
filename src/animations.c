@@ -118,7 +118,12 @@ void moveMinions(void)
     }
 }
 
-//Pomera pucanj ka vojniku
+/* Pomera pucanj ka vojniku
+ * argumenti: int i - redni broj pucnja
+ * 			  int j - redni broj talasa 
+ * 			  int k - redni broj vojnika ka kome ide hitac
+ */
+
 void moveShot(int i, int j, int k)
 {
     //Odredjujemo vektor ka vojniku
@@ -152,7 +157,9 @@ void moveShot(int i, int j, int k)
 	  for (j = 0; j < Length(waves[waveNumber - 1].s); j++) {
 	    if (waves[waveNumber - 1].s[j].inPlay) {
 		  moveShot(i, waveNumber - 1, j);
-		break;		//ispalujemo hitac samo prema prvom vojniku u talasu
+		  //ispalujemo hitac samo prema prvom vojniku u talasu
+		  break;		
+		
 	    }
 	  }
     }

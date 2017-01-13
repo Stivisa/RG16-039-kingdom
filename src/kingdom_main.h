@@ -5,6 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdarg.h>
+#define GL_GLEXT_PROTOTYPES
 
 //glut biblioteka
 #include <GL/glut.h>
@@ -44,7 +45,7 @@ extern int axes;
 extern int grid;
 extern int vals;
 extern int showAttackRadius;
-
+extern int forest;
 //font
 extern GLvoid *fontStyle;
 
@@ -106,8 +107,8 @@ extern int lastWave;
 
 
 //kule
-extern tower default_towers[6];
-extern tower tower_data[16];
+extern tower default_towers[5];
+extern tower tower_data[12];
 extern point preview_points[DEF_CURRENT_OBJS_SIZE];
 extern int preview;
 extern int objectSelected;

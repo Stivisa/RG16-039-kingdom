@@ -177,14 +177,26 @@ static void loadMaterial(char *file)
     int k = -1;
     char *line;
     char *str;
-
+    char *path;
+	char path_src[]="models/";
+	
+	//moramo ubacimo hardcode putanje do datotek mtl, posto funkcija radi 
+	//jedino ako je datoteka u istom folderu
+	path=(char*)malloc((Length(path)+Length(path_src)+2)*sizeof(char));
+	if(path==NULL){
+	  fprintf(stderr,"malloc error SRC");
+	}
+	
+	strcpy(path,path_src);
+	strcat(path,file);
+	//printf("%s\n",path);
     /*  Open file or return with warning on error */
-    FILE *f = fopen(file, "r");
+    FILE *f = fopen(path, "r");
     if (!f) {
-	fprintf(stderr, "Cannot open material file %s\n", file);
+	fprintf(stderr, "Cannot open material file %s\n", path);
 	return;
     }
-
+	free(path);
     /*  Read lines */
     while ((line = readline(f))) {
 	/*  New material */
